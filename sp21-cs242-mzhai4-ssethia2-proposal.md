@@ -71,7 +71,6 @@ Royce would create basic AI and advanced AI, and Ruikang would take the part of 
 |  Basic AI in game logic |  3  |  0: Didn't implement anything <br> 2: implemented AI feature but not in game loop <br> 3: fully functioning basic AI in game loop |
 |  Ranking system |  5  |  0: Didn't implement anything <br> 3: added rank feature to players <br> 5: fully functioning ranking system |
 |  Refactoring |  2  |  0: Didn't refactor previews code <br> 2: refactored all problems according to the feedback |
- 
 |  Unit Test for basic AI |  5  |  0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70%  <br> 5: unit test coverage > 90% |
 |  Manual Test Plan |  5  |  0: No manual test plan <br> 1: The test plan includes only environmental setup or scenario descriptions <br> 3: Test plans contain some content but can be further improved <br> 5: Well composed test plans |
  
