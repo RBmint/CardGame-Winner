@@ -1,6 +1,6 @@
 # A Mobile Winner Card Game App 
-Royce Zhai (mzhai4) | Moderator: Satvik Sethia (ssethia2)
-Ruikang Zhao(ruikang2) | Moderator: Janak Shah (janaks2)
+- Royce Zhai (mzhai4) | Moderator: Satvik Sethia (ssethia2)
+- Ruikang Zhao(ruikang2) | Moderator: Janak Shah (janaks2)
  
 This is a mobile Card Game App about a project for CS242
 Winner:
