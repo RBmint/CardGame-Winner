@@ -1,0 +1,110 @@
+# A Mobile Winner Card Game App 
+- Royce Zhai (mzhai4) | Moderator: Satvik Sethia (ssethia2)
+- Ruikang Zhao(ruikang2) | Moderator: Janak Shah (janaks2)
+ 
+This is a mobile Card Game App about a project for CS242
+Winner:
+https://en.wikipedia.org/wiki/Winner_(card_game)
+ 
+## Abstract
+### Project Purpose
+Create a Winner game mobile app with interactive AIs. 
+ 
+### Project Motivation
+Winner is a card game similar to the game “President” and “Dou dizhu”, but not in the genre of gambling. It could be a good start for people who want to learn popular Chinese gambling card games like “Dou dizhu”, since the rules are very simple except that rules are the same for all players in “Winner”.
+ 
+## Technical Specification
+- Platform: Cross-platform app (React Native)
+- Programming Languages: JavaScript 
+- Stylistic Conventions: Airbnb JavaScript Style Guide
+- IDE: Visual Studio Code (IDE for React Native, acquired by Airbnb)
+- Tools/Interfaces: Mobile devices
+- Target Audience: Broad-range audience
+ 
+## Functional Specification
+### Features
+ 
+- Users can play against each other on a local computer, by taking seats in turns.
+- Users can play against different types of AI opponents, including basic AI and advanced AI.
+- A ranking system which records win/loss and allows users to see the match history against different AIs.
+ 
+ 
+ 
+## Brief Timeline
+- Week 1: Implement the essential player/game/card class.
+- Week 2: Write the whole game logic and game loop. The game should be playable by human players. 
+- Week 3: Implement the basic AI and the ranking system.
+- Week 4: Implement the advanced AI and the GUI.
+### Labor division
+Cowork on essential player/game/card classes, game logic and game loop.
+Royce would create basic AI and advanced AI, and Ruikang would take the part of the ranking system and GUI.
+ 
+ 
+ 
+## Rubrics
+### Week 1
+| Category  | Total Score Allocated | Detailed Rubrics                                                            |
+|-----------|:---------:|-------------------------------------------------------------------------------|
+|  Player class |  5  |  0: Didn't implement anything <br> 3: implemented incomplete Player class<br> 5: completed Player class |
+|  Game class |  5  |  0: Didn't implement anything <br> 3: implemented incomplete Game class <br> 5: completed Game class |
+|  Card class |  5  |  0: Didn't implement anything <br> 3: implemented incomplete Card class <br> 5: completed Card class |
+|  Test Player class |  3  |  0: Didn't implement tests <br> 2: 60%+ test coverage <br> 3: 90%+ test coverage |
+|  Test Card class |  3  | 0: Didn't implement tests <br> 2: 60%+ test coverage <br> 3: 90%+ test coverage |
+|  Test Game class |  4  |  0: Didn't implement tests <br> 2: 60%+ test coverage <br> 4: 90%+ test coverage |
+ 
+### Week 2
+| Category  | Total Score Allocated | Detailed Rubrics                                                            |
+|-----------|:---------:|-------------------------------------------------------------------------------|
+|  Refactoring/Complete missing functions |  2  |  0: Didn't implement anything <br> 1: Not much duplicate code but can be improved <br> 2: Well designed and fully functional |
+|  Game loop |  7  |  0: Didn't implement anything <br> 1: Implemented a loop <br> 3: Allow player to enter the game loop but not fully functional  <br> 5: The game can be played but would not switch turns/end properly <br> 7: Fully functional game loop that start,switch and end properly |
+|  Game logic |  6  |  0: Didn't implement anything <br> 2: Implemented <3 card playing logic <br> 4: Implemented the card playing logic <br> 6: Implemented how the card could be played and how the game would start and end |
+|  Unit Test for game loop |  5  |  0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70%  <br> 5: unit test coverage > 90% |
+|  Unit Test for game logic |  5  |  0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70%  <br> 5: unit test coverage > 90% |
+ 
+ 
+ 
+ 
+### Week 3
+Royce Zhai:
+| Category  | Total Score Allocated | Detailed Rubrics                                                            |
+|-----------|:---------:|-------------------------------------------------------------------------------|
+|  Basic AI functions |  5  |  0: Didn't implement anything <br> 1: Implemented 1 basic AI features/functions <br> 2: Implemented 2 basic AI features/functions  <br> 3: Implemented 3 basic AI features/functions <br> 4: Implemented 4 basic AI features/functions <br> 5: Implemented >=5 basic AI features/functions|
+|  Basic AI interaction feedback |  3  |  0: Didn't implement anything <br> 2: Implemented simple reaction feedback using terminal/commandline <br> 3: Implemented detailed AI feedback and information using terminal/commandline |
+|  Basic AI game logic |  5  |  0: Didn't implement anything <br>1: Player is able to choose the number of AI in game using commandline <br>3: Three AIs can automatically join and start the game <br> 5: The indicated amount of AI can play smoothly with real players and end the game with accurate winner  |
+|  Refactoring |  2  |  0: Didn't refactor previous code <br> 2: refactored all problems according to the feedback |
+|  Unit Test for basic AI |  5  |  0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70%  <br> 5: unit test coverage > 90% |
+|  Manual Test Plan for basic AI in game |  5  |  0: No manual test plan <br> 1: The test plan includes only environmental setup or scenario descriptions <br> 3: Test plans contain some content but can be further improved <br> 5: Well composed test plans |
+
+Ruikang Zhao:
+| Category  | Total Score Allocated | Detailed Rubrics                                                            |
+|-----------|:---------:|-------------------------------------------------------------------------------|
+|  Ranking system for players |  5  |  0: Didn't implement anything <br> 1: Ranking system can show previous game winner <br> 3: Ranking system add points for each separate win  <br> 5: Ranking system can identify different players based on name  |
+|  Ranking system match history |  5  |  0: Didn't implement anything <br> 1: Ranking system can show how each player played in a previous game <br> 3: Ranking system can show all past games <br> 5: Ranking system can sync play history and player's points base on game history |
+|  Ranking system that is permanently stored |  3  |  0: Didn't implement anything <br> 1: Player points are permanently stored <br> 3: All match history are permanently stored |
+|  Refactoring |  2  |  0: Didn't refactor previews code <br> 2: refactored all problems according to the feedback |
+|  Unit Test for Ranking system |  5  |  0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70%  <br> 5: unit test coverage > 90% |
+|  Manual Test Plan for ranking system |  5  |  0: No manual test plan <br> 1: The test plan includes only environmental setup or scenario descriptions <br> 3: Test plans contain some content but can be further improved <br> 5: Well composed test plans |
+ 
+ 
+### Week 4
+Royce Zhai:
+| Category  | Total Score Allocated | Detailed Rubrics                                                            |
+|-----------|:---------:|-------------------------------------------------------------------------------|
+|  Advanced AI functions |  5  |  0: Didn't implement anything <br> 1: Implemented 1 advanced AI features/functions <br> 2: Implemented 2 advanced AI features/functions  <br> 3: Implemented 3 advanced AI features/functions <br> 4: Implemented 4 advanced AI features/functions <br> 5: Implemented >=5 advanced AI features/functions|
+|  Advanced AI interaction feedback and explanation |  3  |  0: Didn't implement anything <br> 1: Implemented simple reaction feedback using terminal/commandline <br> 3: Implemented detailed AI feedback and what is different from basic AI using terminal/commandline |
+|  Advanced AI win rate |  5  |  0: Didn't implement anything <br> 1: Advanced AI share a similar or slightly higher win rate than basic AI<br> 3: Advanced AI can win most games when against two basic AIs <br> 5: Advanced AI can compete a human player  |
+|  Refactoring |  2  |  0: Didn't refactor previous code <br> 2: refactored all problems according to the feedback |
+|  Unit Test for advanced AI |  5  |  0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70%  <br> 5: unit test coverage > 90% |
+|  Manual Test Plan for advanced AI in game |  5  |  0: No manual test plan <br> 1: The test plan includes only environmental setup or scenario descriptions <br> 3: Test plans contain some content but can be further improved <br> 5: Well composed test plans |
+
+Ruikang Zhao:
+| Category  | Total Score Allocated | Detailed Rubrics                                                            |
+|-----------|:---------:|-------------------------------------------------------------------------------|
+|  GUI interface for pre-game preparation |  4  |  0: Didn't implement anything <br> 2: Allowed users to input their name before the game <br> 4: Implemented an welcome screen that allows user to choose from start or quit  |
+|  GUI interface for game play |  6  |  0: Didn't implement anything <br> 2: Implemented the graphics for each card and number of card as well as the card in hand <br> 4: The card of other players are correctly hidden during turns <br> 6: Allow the AI to have a turn and behave like a human player |
+|  GUI interface for ranking system |  5  |  0: Didn't implement anything <br> 1: Implemented a ranking counter hanging in game page <br> 3: Completed the ranking and match history  <br> 5: The ranking system can be accessed anywhere in game but now shown directly with the option to clear history |
+|  Manual Test Plan for the ranking system |  5  |  0: No manual test plan <br> 1: The test plan includes only environmental setup or scenario descriptions <br> 3: Test plans contain some content but can be further improved <br> 5: Well composed test plans |
+|  Manual Test Plan for the game GUI |  5  |  0: No manual test plan <br> 1: The test plan includes only environmental setup or scenario descriptions <br> 3: Test plans contain some content but can be further improved <br> 5: Well composed test plans |
+
+link for the grading calculator:
+https://docs.google.com/spreadsheets/d/1m0Tz0bqKwk-yHyYF5w4lUY6ORNpmerBHYGyTWcHt9eM/edit?usp=sharing
