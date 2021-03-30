@@ -19,7 +19,7 @@ Winner is a card game similar to the game “President” and “Dou dizhu”, b
  
 ## Technical Specification
  
-- Platform: Cross-platform app (React Native)
+- Platform: Cross-platform app (Java, React Native)
 - Programming Languages: Java, JavaScript
 - Stylistic Conventions: Classic Java style Guide, Airbnb JavaScript Style Guide
 - IDE: IntelliJ (IDE for Java), Visual Studio Code (IDE for React Native, acquired by Airbnb)
@@ -37,14 +37,10 @@ Winner is a card game similar to the game “President” and “Dou dizhu”, b
 ## Brief Timeline
  
 - Week 1: Implement the essential player/game/card class.
-- Week 2: Write the whole game logic and game loop. The game should be playable by human players.
-- Week 3: Implement the basic AI and the ranking system.
+- Week 2: Implement the basic AI and game logic/game loop. The game should be playable by human players.
+- Week 3: Implement the meidum AI and the ranking system.
 - Week 4: Implement the advanced AI and the GUI.
- 
-### Labor division
- 
-Cowork on essential player/game/card classes, game logic and game loop.
-Royce would create basic AI and advanced AI, and Ruikang would take the part of the ranking system and GUI.
+
  
 ## Rubrics
  
