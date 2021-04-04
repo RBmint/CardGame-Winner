@@ -1,5 +1,6 @@
 package winner.game;
 
+//TODO: to be implemented in week 2
 public class SinglePlay {
     private Card[] cards;
     private ComboType comboType;
@@ -10,8 +11,9 @@ public class SinglePlay {
         comboType = new ComboType(cards);
         playerName = inputPlayerName;
     }
-    public boolean compare() {
-        return false;
+    public boolean compareCanBePlayed(SinglePlay lastPlay) {
+
+        return true;
     }
     public String getPlayerName() {
         return playerName;

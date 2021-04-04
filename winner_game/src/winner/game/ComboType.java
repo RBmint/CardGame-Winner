@@ -1,5 +1,6 @@
 package winner.game;
 
+//TODO: To be implemented in week 2
 public class ComboType {
     private String type;
     private boolean isValid;
@@ -31,7 +32,7 @@ public class ComboType {
 
     public boolean isPair(Card[] input) {
         if (input.length == 2) {
-            return input[0].value == input[1].value;
+            return input[0].getFacialValue() == input[1].getFacialValue();
         }
         return false;
     }
