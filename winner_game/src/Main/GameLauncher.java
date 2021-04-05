@@ -71,13 +71,14 @@ public class GameLauncher implements CardConstants {
     private void playSelectedCards(int[] indexOfCardsToBePlayed) {
         Player p = game.getCurrentPlayingPlayer();
         Card[] toBeChecked = new Card[indexOfCardsToBePlayed.length];
+        /*Convert the index array from int to a card array */
         for (int i = 0; i < indexOfCardsToBePlayed.length; i++) {
             toBeChecked[i] = p.getCardByIndex(indexOfCardsToBePlayed[i]);
         }
 
+        /*Compare two plays to check if this play can be played. Currently set to always true */
         SinglePlay thisPlay = new SinglePlay(toBeChecked, p.getPlayerName());
         SinglePlay lastPlay = game.getLastPlay();
-
         if (thisPlay.compareCanBePlayed(lastPlay) || lastPlay.getPlayerName().equals(STARTING_PLAYER)) {
             game.addToLastPlay(thisPlay);
             game.removeMultipleFromPlayer(toBeChecked);

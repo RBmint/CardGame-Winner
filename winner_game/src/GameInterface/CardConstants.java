@@ -10,6 +10,7 @@ public interface CardConstants {
     /*Constants for game initiation */
     int DEFAULT_PLAYER_COUNT = 3;
     int STARTING_HAND = 18;
+    String STARTING_PLAYER = "START";
     Card[] STARTING_CARD = {new Card(0, 0, 0)};
 
     /*From Ace to King, each card has a facial value from 1 to 13 */
@@ -32,5 +33,4 @@ public interface CardConstants {
 
     /*For ACE and BIG TWO, there is a value difference of 13 */
     int ACTUAL_VALUE_DIFF = 13;
-    String STARTING_PLAYER = "START";
 }
