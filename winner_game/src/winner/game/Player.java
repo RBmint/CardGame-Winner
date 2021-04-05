@@ -113,7 +113,7 @@ public class Player implements CardConstants {
         for (Card card : compareDeck.getCardDeck()) {
             for (Card myCard : myCards) {
                 if (myCard.getFacialValue() == card.getFacialValue() && myCard.getSuit() == card.getSuit()) {
-                    newHand.add(card);
+                    newHand.add(myCard);
                 }
             }
         }
