@@ -1,8 +1,8 @@
-package winner.game.test;
+package Tests;
 
 import org.junit.Test;
-import winner.game.Card;
-import winner.game.CardConstants;
+import Card.Card;
+import GameInterface.CardConstants;
 
 import static org.junit.Assert.assertEquals;
 

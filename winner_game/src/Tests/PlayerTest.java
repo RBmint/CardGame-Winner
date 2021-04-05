@@ -1,9 +1,9 @@
-package winner.game.test;
+package Tests;
 
 import org.junit.jupiter.api.Test;
-import winner.game.Card;
-import winner.game.CardConstants;
-import winner.game.Player;
+import Card.Card;
+import GameInterface.CardConstants;
+import Player.Player;
 
 import java.util.Collections;
 

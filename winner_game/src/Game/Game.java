@@ -1,11 +1,16 @@
-package winner.game;
+package Game;
+
+import Card.Card;
+import Card.CardDeck;
+import GameInterface.CardConstants;
+import Player.Player;
 
 import java.util.Stack;
 
 /**
  * This class contains the core functionality of the Winner game.
  */
-public class Game implements CardConstants{
+public class Game implements CardConstants {
     private boolean gameIsOver;
     private Player[] activePlayers;
 
@@ -19,12 +24,12 @@ public class Game implements CardConstants{
         newDeck = new CardDeck(false);
         activePlayers = new Player[DEFAULT_PLAYER_COUNT];
         for (int i = 0; i < DEFAULT_PLAYER_COUNT; i++) {
+            //TODO: Take user input for player name
             activePlayers[i] = new Player("Player" + i);
         }
         activePlayers[0].switchTurn();
         dealCardsToPlayers();
-        SinglePlay startingPlay = new SinglePlay(STARTING_CARD, "START");
-        System.out.println(startingPlay.getPlayerName());
+        SinglePlay startingPlay = new SinglePlay(STARTING_CARD, STARTING_PLAYER);
         pastPlays.add(startingPlay);
 
     }

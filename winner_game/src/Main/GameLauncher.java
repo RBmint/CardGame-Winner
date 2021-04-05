@@ -1,4 +1,10 @@
-package winner.game;
+package Main;
+
+import Card.Card;
+import Game.Game;
+import Game.SinglePlay;
+import GameInterface.CardConstants;
+import Player.Player;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -72,7 +78,7 @@ public class GameLauncher implements CardConstants {
         SinglePlay thisPlay = new SinglePlay(toBeChecked, p.getPlayerName());
         SinglePlay lastPlay = game.getLastPlay();
 
-        if (thisPlay.compareCanBePlayed(lastPlay) || lastPlay.getPlayerName().equals("START")) {
+        if (thisPlay.compareCanBePlayed(lastPlay) || lastPlay.getPlayerName().equals(STARTING_PLAYER)) {
             game.addToLastPlay(thisPlay);
             game.removeMultipleFromPlayer(toBeChecked);
             checkGameStatus();

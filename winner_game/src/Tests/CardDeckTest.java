@@ -1,8 +1,8 @@
-package winner.game.test;
+package Tests;
 
 import org.junit.jupiter.api.Test;
-import winner.game.Card;
-import winner.game.CardDeck;
+import Card.Card;
+import Card.CardDeck;
 
 import static org.junit.jupiter.api.Assertions.*;
 

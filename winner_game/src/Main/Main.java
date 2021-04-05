@@ -1,4 +1,5 @@
-package winner.game;
+package Main;
+
 
 /**
  * The class is simply a runnable which will create a "game launcher" that calls

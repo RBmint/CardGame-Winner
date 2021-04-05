@@ -1,4 +1,7 @@
-package winner.game;
+package Game;
+
+
+import Card.Card;
 
 //TODO: to be implemented in week 2
 public class SinglePlay {
