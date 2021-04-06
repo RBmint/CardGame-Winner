@@ -9,8 +9,14 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * unit tests for Player class
+ */
 class PlayerTest {
 
+    /**
+     * testing switchTurn()
+     */
     @Test
     void testSwitchTurn() {
         Player bruceLee = new Player("Bruce Lee");
@@ -18,12 +24,18 @@ class PlayerTest {
         assertTrue(bruceLee.isTurnToPlay());
     }
 
+    /**
+     * testing isTurnToPlay()
+     */
     @Test
     void testIsTurnToPlay() {
         Player bruceLee = new Player("Bruce Lee");
         assertFalse(bruceLee.isTurnToPlay());
     }
 
+    /**
+     * testing hasThisCard()
+     */
     @Test
     void testHasThisCard() {
         Player bruceLee = new Player("Bruce Lee");
@@ -33,6 +45,9 @@ class PlayerTest {
 
     }
 
+    /**
+     * testing removeCardFromHand()
+     */
     @Test
     void testRemoveCardFromHand() {
         Player bruceLee = new Player("Bruce Lee");
@@ -42,12 +57,18 @@ class PlayerTest {
         assertEquals(0, bruceLee.getNumCardInHand());
     }
 
+    /**
+     * testing getPlayerName()
+     */
     @Test
     void testGetPlayerName() {
         Player bruceLee = new Player("Bruce Lee");
         assertEquals("Bruce Lee", bruceLee.getPlayerName());
     }
 
+    /**
+     * testing addCardToHand()
+     */
     @Test
     void addCardToHand() {
         Player bruceLee = new Player("Bruce Lee");
@@ -58,12 +79,18 @@ class PlayerTest {
         assertEquals(1, bruceLee.getNumCardInHand());
     }
 
+    /**
+     * testing getNumCardInHand()
+     */
     @Test
     void testGetNumCardInHand() {
         Player bruceLee = new Player("Bruce Lee");
         assertEquals(0, bruceLee.getNumCardInHand());
     }
 
+    /**
+     * testing hasCardInHand()
+     */
     @Test
     void testHasCardInHand() {
         Player bruceLee = new Player("Bruce Lee");
@@ -73,6 +100,9 @@ class PlayerTest {
         assertTrue(bruceLee.hasCardInHand());
     }
 
+    /**
+     * testing getCardByIndex()
+     */
     @Test
     void getCardByIndex() {
         Player bruceLee = new Player("Bruce Lee");
@@ -84,6 +114,9 @@ class PlayerTest {
         assertEquals(two, bruceLee.getCardByIndex(2));
     }
 
+    /**
+     * testing getAllCards()
+     */
     @Test
     void getAllCards() {
         Player bruceLee = new Player("Bruce Lee");
@@ -94,6 +127,9 @@ class PlayerTest {
         assertEquals(2, bruceLee.getAllCards().size());
     }
 
+    /**
+     * testing sortCurrentHand()
+     */
     @Test
     void sortCurrentHand() {
         Player bruceLee = new Player("Bruce Lee");

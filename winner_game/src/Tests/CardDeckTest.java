@@ -6,8 +6,14 @@ import Card.CardDeck;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * unit tests for CardDeck class
+ */
 class CardDeckTest {
 
+    /**
+     * testing addNumberCards()
+     */
     @Test
     void testAddNumberCards() {
         CardDeck deck = new CardDeck(true);
@@ -17,6 +23,9 @@ class CardDeckTest {
         assertEquals(52, sizeTwo - sizeOne);
     }
 
+    /**
+     * testing addJokers()
+     */
     @Test
     void testAddJokers() {
         CardDeck deck = new CardDeck(true);
@@ -24,6 +33,9 @@ class CardDeckTest {
         assertEquals(5, deck.getCardDeck().getLast().getSuit());
     }
 
+    /**
+     * testing shuffleCardDeck()
+     */
     @Test
     void shuffleCardDeck() {
         CardDeck deck = new CardDeck(true);
@@ -33,6 +45,9 @@ class CardDeckTest {
         assertNotEquals(cardOne, cardTwo);
     }
 
+    /**
+     * testing dealOneCard()
+     */
     @Test
     void TestDealOneCard() {
         CardDeck deck = new CardDeck(true);
@@ -43,6 +58,9 @@ class CardDeckTest {
         assertEquals(1, diff);
     }
 
+    /**
+     * testing deck getter
+     */
     @Test
     void getCardDeck() {
         CardDeck deck = new CardDeck(true);

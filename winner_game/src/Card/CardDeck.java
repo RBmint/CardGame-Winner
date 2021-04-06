@@ -32,7 +32,7 @@ public class CardDeck implements CardConstants {
         addJokers();
         if (!isCompare) {
             shuffleCardDeck();
-            System.out.println("Deck Initiated");
+//            System.out.println("Deck Initiated");
         }
     }
 
