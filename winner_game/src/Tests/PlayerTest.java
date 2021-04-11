@@ -124,7 +124,8 @@ class PlayerTest {
         Card two = new Card(4, 4, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(one);
         bruceLee.addCardToHand(two);
-        assertEquals(2, bruceLee.getAllCards().size());
+        assertEquals(one, bruceLee.getAllCards().getFirst());
+        assertEquals(two, bruceLee.getAllCards().getLast());
     }
 
     /**

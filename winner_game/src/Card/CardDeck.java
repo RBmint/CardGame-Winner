@@ -26,6 +26,7 @@ public class CardDeck implements CardConstants {
 
     /**
      * Add number cards and two jokers into the card deck and then shuffles the deck.
+     * @param isCompare whether the deck is used for sorting
      */
     private void initiateCardDeck(boolean isCompare) {
         addNumberCards();
