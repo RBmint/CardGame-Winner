@@ -71,7 +71,6 @@ public class Game implements CardConstants {
      */
     public void printCurrentPlayingPlayer() {
         Player p = getCurrentPlayingPlayer();
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println(p.getPlayerName() + "'s Turn");
     }
 

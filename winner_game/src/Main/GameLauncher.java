@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class GameLauncher implements CardConstants {
     private Game game;
     private boolean gameIsOver = false;
-
+    private boolean newPlayerTurn = true;
+    private int turns = 1;
     /**
      * The default constructor will start a new game and bring the
      * players into the game loop.
@@ -31,14 +32,28 @@ public class GameLauncher implements CardConstants {
      */
     private void enterGameLoop() {
         while (!gameIsOver) {
+            System.out.print("This is turn #" + turns + " and it is ");
             game.printCurrentPlayingPlayer();
             Player currentPlayingPlayer = game.getCurrentPlayingPlayer();
 //            String playerName = currentPlayingPlayer.getPlayerName();
-            printAllCardsInHand(currentPlayingPlayer.getAllCards());
+            if (newPlayerTurn) {
+                if (turns == 1) {
+                    System.out.println("The first player can play whatever he wants.");
+                } else {
+                    System.out.println("Current play is the following cards:");
+                    for (Card card : game.getLastPlay().getCards()) {
+                        printCurrentCard(card);
+                    }
+                }
+                printAllCardsInHand(currentPlayingPlayer.getAllCards());
+                newPlayerTurn = false;
+            }
 
             int[] indexOfCards = getIndexOfCards();
             if (indexOfCards[0] == 0) {
                 game.skipCurrentPlayerTurn();
+                newPlayerTurn = true;
+                turns++;
             } else {
                 playSelectedCards(indexOfCards);
             }
@@ -79,14 +94,20 @@ public class GameLauncher implements CardConstants {
         /*Compare two plays to check if this play can be played. Currently set to always true */
         SinglePlay thisPlay = new SinglePlay(toBeChecked, p.getPlayerName());
         SinglePlay lastPlay = game.getLastPlay();
-        if (thisPlay.compareCanBePlayed(lastPlay) || lastPlay.getPlayerName().equals(STARTING_PLAYER)) {
+        if (thisPlay.compareCanBePlayed(lastPlay) ||
+                /*The first hand is always playable as long as it is valid */
+                (lastPlay.getPlayerName().equals(STARTING_PLAYER) && thisPlay.getComboType().isValid()) ||
+                /*If all other players choose to skip turn then the leading player can play freely */
+                (lastPlay.getPlayerName().equals(p.getPlayerName()) && thisPlay.getComboType().isValid())) {
             game.addToLastPlay(thisPlay);
             game.removeMultipleFromPlayer(toBeChecked);
             checkGameStatus();
             if (gameIsOver) {return;}
             game.skipCurrentPlayerTurn();
+            newPlayerTurn = true;
+            turns++;
         } else {
-            System.out.println("Selected cards cannot be played. Please try again.");
+            System.out.println("Selected cards cannot be played. Please try input index again: ");
         }
     }
 
