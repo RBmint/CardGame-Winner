@@ -157,16 +157,6 @@ public class GameLauncher implements CardConstants {
      * @return the correct suit
      */
     private String getCorrectSuitName(Card cardToPrint) {
-        if (cardToPrint.getSuit() == CLUBS) {
-            return "CLUBS";
-        } else if (cardToPrint.getSuit() == DIAMONDS) {
-            return "DIAMONDS";
-        } else if (cardToPrint.getSuit() == HEARTS) {
-            return "HEARTS";
-        } else if (cardToPrint.getSuit() == SPADES) {
-            return "SPADES";
-        } else {
-            return "JOKER";
-        }
+        return SUIT_NAME_STRING[cardToPrint.getSuit()];
     }
 }
