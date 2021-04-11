@@ -60,7 +60,7 @@ class GameTest implements CardConstants {
 
         Game g = new Game();
         g.printCurrentPlayingPlayer();
-        String expectedOutput  = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nPlayer0's Turn\n";
+        String expectedOutput  = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\nPlayer0's Turn\r\n";
         assertEquals(expectedOutput, outContent.toString());
     }
 
