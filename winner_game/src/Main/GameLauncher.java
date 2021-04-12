@@ -5,9 +5,7 @@ import Game.Game;
 import Game.SinglePlay;
 import GameInterface.CardConstants;
 import Player.Player;
-import Player.BasicAI;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * The class that starts the game and holds a game loop.
@@ -32,6 +30,7 @@ public class GameLauncher implements CardConstants {
      */
     private void enterGameLoop() {
         while (!gameIsOver) {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~");
             System.out.print("This is turn #" + turns + " and it is ");
             game.printCurrentPlayingPlayer();
             Player currentPlayingPlayer = game.getCurrentPlayingPlayer();
@@ -45,16 +44,16 @@ public class GameLauncher implements CardConstants {
                         printCurrentCard(card);
                     }
                 }
-                printAllCardsInHand(currentPlayingPlayer.getAllCards());
+                if (!currentPlayingPlayer.isAI()) {
+                    printAllCardsInHand(currentPlayingPlayer.getAllCards());
+                }
                 newPlayerTurn = false;
             }
-
-//            if (currentPlayingPlayer.isAI()) {
-//                BasicAI ai = game.getCurrentPlayingPlayer();
-//            }
-            int[] indexOfCards = currentPlayingPlayer.playAHand();
-
+            int[] indexOfCards = currentPlayingPlayer.playAHand(game.getLastPlay());
             if (indexOfCards[0] == 0) {
+                if (currentPlayingPlayer.isAI()) {
+                    System.out.println(currentPlayingPlayer.getPlayerName() + " choose to skip turn");
+                }
                 game.skipCurrentPlayerTurn();
                 newPlayerTurn = true;
                 turns++;
@@ -86,6 +85,12 @@ public class GameLauncher implements CardConstants {
                 (lastPlay.getPlayerName().equals(STARTING_PLAYER) && thisPlay.getComboType().isValid()) ||
                 /*If all other players choose to skip turn then the leading player can play freely */
                 (lastPlay.getPlayerName().equals(p.getPlayerName()) && thisPlay.getComboType().isValid())) {
+            if (p.isAI()) {
+                System.out.print("AI chose to play " );
+                for (Card card : thisPlay.getCards()) {
+                    printCurrentCard(card);
+                }
+            }
             game.addToLastPlay(thisPlay);
             game.removeMultipleFromPlayer(toBeChecked);
             checkGameStatus();

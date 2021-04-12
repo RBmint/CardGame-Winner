@@ -20,6 +20,7 @@ public class Player implements CardConstants {
     /**
      * The constructor will initiate a player instance with name.
      * @param newName the name to be assigned
+     * @param isAI whether the player is an AI player
      */
     public Player(String newName, boolean isAI) {
         playerName = newName;
@@ -129,6 +130,10 @@ public class Player implements CardConstants {
         myCards = newHand;
     }
 
+    /**
+     * Check if current player is an AI player.
+     * @return true if the player is an AI, false otherwise
+     */
     public boolean isAI() {
         return isAI;
     }
@@ -138,7 +143,7 @@ public class Player implements CardConstants {
      * play and convert to an array of integers.
      * @return the cards as an array of integers.
      */
-    public int[] playAHand() {
+    public int[] playAHand(SinglePlay lastPlay) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         /*Terminal UI will be replaced in later weeks, so currently only comma will be used for testing */

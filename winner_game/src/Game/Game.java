@@ -4,7 +4,7 @@ import Card.Card;
 import Card.CardDeck;
 import GameInterface.CardConstants;
 import Player.Player;
-
+import Player.BasicAI;
 import java.util.Stack;
 
 /**
@@ -18,20 +18,30 @@ public class Game implements CardConstants {
     private CardDeck newDeck;
 
     /**
-     *
+     * The default constructor will start a game with a new deck and three players.
+     * The player will be dealt cards and the first player will start his turn.
      */
     public Game() {
         newDeck = new CardDeck(false);
-        activePlayers = new Player[DEFAULT_PLAYER_COUNT];
-        for (int i = 0; i < DEFAULT_PLAYER_COUNT; i++) {
-            //TODO: Take user input for player name
-            activePlayers[i] = new Player("Player" + i);
-        }
-        activePlayers[0].switchTurn();
+        initiatePlayers();
         dealCardsToPlayers();
         SinglePlay startingPlay = new SinglePlay(STARTING_CARD, STARTING_PLAYER);
         pastPlays.add(startingPlay);
+    }
 
+    /**
+     * Initiate the players that will join the game. The players currently include
+     * human player and basic AI players.
+     */
+    public void initiatePlayers() {
+        activePlayers = new Player[DEFAULT_PLAYER_COUNT];
+        for (int i = 0; i < DEFAULT_PLAYER_COUNT; i++) {
+            //TODO: Take user input for player name
+//            activePlayers[i] = new Player("Player" + i, false);
+            activePlayers[i] = new BasicAI("Basic AI" + i*101, true);
+        }
+        activePlayers[0] = new Player("the Omnipotent", false);
+        activePlayers[0].switchTurn();
     }
 
     /**
@@ -145,4 +155,5 @@ public class Game implements CardConstants {
         }
         return gameIsOver;
     }
+
 }
