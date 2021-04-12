@@ -97,6 +97,10 @@ public class Player implements CardConstants {
      * @return The card that has the corresponding index.
      */
     public Card getCardByIndex(int index) {
+         /*
+        since the intrinsic index starts from 0, index should be subtracted by 1
+         */
+
         return myCards.get(index - 1);
     }
 
