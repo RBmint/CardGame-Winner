@@ -60,7 +60,8 @@ class GameTest implements CardConstants {
 
         Game g = new Game();
         g.printCurrentPlayingPlayer();
-        String expectedOutput  = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nPlayer0's Turn\n";
+        String curPlayerName = g.getCurrentPlayingPlayer().getPlayerName();
+        String expectedOutput = curPlayerName + "'s Turn\n";
         assertEquals(expectedOutput, outContent.toString());
     }
 
@@ -70,7 +71,7 @@ class GameTest implements CardConstants {
     @Test
     void getCurrentPlayingPlayer() {
         Game g = new Game();
-        assertEquals("Player0", g.getCurrentPlayingPlayer().getPlayerName());
+        assertNotNull(g.getCurrentPlayingPlayer().getPlayerName());
     }
 
     /**
@@ -105,8 +106,10 @@ class GameTest implements CardConstants {
     @Test
     void skipCurrentPlayerTurn() {
         Game g = new Game();
+        Player nextPlayer = g.getNextPlayer();
         g.skipCurrentPlayerTurn();
-        assertEquals("Player1", g.getCurrentPlayingPlayer().getPlayerName());
+        Player skippedTo = g.getCurrentPlayingPlayer();
+        assertSame(nextPlayer, skippedTo);
     }
 
     /**
@@ -115,7 +118,10 @@ class GameTest implements CardConstants {
     @Test
     void getNextPlayer() {
         Game g = new Game();
-        assertEquals("Player1", g.getNextPlayer().getPlayerName());
+        assertNotNull(g.getNextPlayer());
+        Player nextPlayer = g.getNextPlayer();
+        g.skipCurrentPlayerTurn();
+        assertSame(nextPlayer, g.getCurrentPlayingPlayer());
     }
 
     /**

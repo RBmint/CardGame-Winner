@@ -58,7 +58,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's only one card, false otherwise
      */
-    public boolean isSingle(Card[] input) {
+    public static boolean isSingle(Card[] input) {
         return input.length == 1;
     }
 
@@ -67,7 +67,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's a valid pair, false otherwise
      */
-    public boolean isPair(Card[] input) {
+    public static boolean isPair(Card[] input) {
         if (input.length == 2) {
             return input[0].getFacialValue() == input[1].getFacialValue();
         }
@@ -79,7 +79,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's a valid three of a kind, false otherwise
      */
-    public boolean isThreeOfAKind(Card[] input) {
+    public static boolean isThreeOfAKind(Card[] input) {
         if (input.length == 3) {
             return input[0].getFacialValue() == input[1].getFacialValue()
                     && input[0].getFacialValue() == input[2].getFacialValue();
@@ -92,7 +92,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there are consecutive pairs, false otherwise
      */
-    public boolean isConsecutivePairs(Card[] input) {
+    public static boolean isConsecutivePairs(Card[] input) {
         if (input.length >= 4 && input.length % 2 == 0) {
             LinkedList <Integer> value = new LinkedList<>();
             for (Card card : input) {
@@ -130,7 +130,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's a valid full house, false otherwise
      */
-    public boolean isFullHouse(Card[] input) {
+    public static boolean isFullHouse(Card[] input) {
         if (input.length == 5) {
             LinkedList <Integer> value = new LinkedList<>();
             int valueCount = 0;
@@ -159,7 +159,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's a valid straight, false otherwise
      */
-    public boolean isStraight(Card[] input) {
+    public static boolean isStraight(Card[] input) {
         if (input.length >= 5) {
             LinkedList<Integer> value = new LinkedList<>();
             for (Card card : input) {
@@ -191,7 +191,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's a bomb, false otherwise
      */
-    public boolean isBomb(Card[] input) {
+    public static boolean isBomb(Card[] input) {
         if (input.length == 4) {
             for (Card card : input) {
                 /*Check if all four cards have the same facial value */
@@ -209,7 +209,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be checked
      * @return true if there's a straight flush, false otherwise
      */
-    public boolean isStraightFlush(Card[] input) {
+    public static boolean isStraightFlush(Card[] input) {
         /*Check if the input is a straight first */
         if (isStraight(input)) {
             for (Card card : input) {
@@ -228,7 +228,7 @@ public class ComboType implements CardConstants {
      * @param list the list of integer to be checked
      * @return true if the integers are consecutive, false otherwise
      */
-    public boolean checkIfInARow(LinkedList<Integer> list) {
+    public static boolean checkIfInARow(LinkedList<Integer> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) + 1 != list.get(i + 1)) {
                 return false;
@@ -243,7 +243,7 @@ public class ComboType implements CardConstants {
      * @param input the card array to be calculated
      * @return the top card value in the array
      */
-    public int topCardValue(Card[] input) {
+    public static int topCardValue(Card[] input) {
         LinkedList <Integer> value = new LinkedList<>();
         for (Card card : input) {
             value.add(card.getFacialValue());
