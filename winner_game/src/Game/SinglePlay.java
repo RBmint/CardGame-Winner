@@ -44,7 +44,7 @@ public class SinglePlay implements CardConstants {
             return compareBomb(lastPlay);
         }
         /*Compare the singles because suit will matter in this case */
-        if (this.getComboType().getType().equals(SINGLE)) {
+        if (this.getComboType().getType().equals(SINGLE) && lastPlay.getComboType().getType().equals(SINGLE)) {
             return compareSingle(lastPlay);
         }
         /*The rest cases, suit must be the same, just compare top card directly */
