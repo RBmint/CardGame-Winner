@@ -5,7 +5,7 @@ import Game.Game;
 import Game.SinglePlay;
 import GameInterface.CardConstants;
 import Player.Player;
-
+import Player.BasicAI;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -49,7 +49,11 @@ public class GameLauncher implements CardConstants {
                 newPlayerTurn = false;
             }
 
-            int[] indexOfCards = getIndexOfCards();
+//            if (currentPlayingPlayer.isAI()) {
+//                BasicAI ai = game.getCurrentPlayingPlayer();
+//            }
+            int[] indexOfCards = currentPlayingPlayer.playAHand();
+
             if (indexOfCards[0] == 0) {
                 game.skipCurrentPlayerTurn();
                 newPlayerTurn = true;
@@ -58,23 +62,6 @@ public class GameLauncher implements CardConstants {
                 playSelectedCards(indexOfCards);
             }
         }
-    }
-
-    /**
-     * Use the scanner to get the index of cards that a player chooses to
-     * play and convert to an array of integers.
-     * @return the cards as an array of integers.
-     */
-    private int[] getIndexOfCards() {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        /*Terminal UI will be replaced in later weeks, so currently only comma will be used for testing */
-        String[] inputAsArray = input.split(",");
-        int[] indexOfCards = new int[inputAsArray.length];
-        for (int i = 0; i < inputAsArray.length; i++) {
-            indexOfCards[i] = Integer.parseInt(inputAsArray[i]);
-        }
-        return indexOfCards;
     }
 
     /**

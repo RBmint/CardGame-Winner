@@ -1,9 +1,11 @@
 package Player;
 
 import Card.Card;
+import Game.SinglePlay;
 import GameInterface.CardConstants;
 import Card.CardDeck;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * The class that are in charge of the players activities.
@@ -12,15 +14,17 @@ import java.util.LinkedList;
 public class Player implements CardConstants {
     private String playerName;
     private boolean isTurnToPlay = false;
+    private boolean isAI = false;
     private LinkedList<Card> myCards;
 
     /**
      * The constructor will initiate a player instance with name.
      * @param newName the name to be assigned
      */
-    public Player(String newName) {
+    public Player(String newName, boolean isAI) {
         playerName = newName;
         myCards = new LinkedList<>();
+        this.isAI = isAI;
     }
 
     /**
@@ -119,5 +123,26 @@ public class Player implements CardConstants {
             }
         }
         myCards = newHand;
+    }
+
+    public boolean isAI() {
+        return isAI;
+    }
+
+    /**
+     * Use the scanner to get the index of cards that a player chooses to
+     * play and convert to an array of integers.
+     * @return the cards as an array of integers.
+     */
+    public int[] playAHand() {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        /*Terminal UI will be replaced in later weeks, so currently only comma will be used for testing */
+        String[] inputAsArray = input.split(",");
+        int[] indexOfCards = new int[inputAsArray.length];
+        for (int i = 0; i < inputAsArray.length; i++) {
+            indexOfCards[i] = Integer.parseInt(inputAsArray[i]);
+        }
+        return indexOfCards;
     }
 }

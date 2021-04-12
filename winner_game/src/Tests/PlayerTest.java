@@ -19,7 +19,7 @@ class PlayerTest {
      */
     @Test
     void testSwitchTurn() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         bruceLee.switchTurn();
         assertTrue(bruceLee.isTurnToPlay());
     }
@@ -29,7 +29,7 @@ class PlayerTest {
      */
     @Test
     void testIsTurnToPlay() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         assertFalse(bruceLee.isTurnToPlay());
     }
 
@@ -38,7 +38,7 @@ class PlayerTest {
      */
     @Test
     void testHasThisCard() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card toAdd = new Card(3, 3, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(toAdd);
         assertTrue(bruceLee.hasThisCard(toAdd));
@@ -50,7 +50,7 @@ class PlayerTest {
      */
     @Test
     void testRemoveCardFromHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         bruceLee.addCardToHand(new Card(3, 3, CardConstants.DIAMONDS));
         assertEquals(1, bruceLee.getNumCardInHand());
         bruceLee.removeCardFromHand(bruceLee.getAllCards().getFirst());
@@ -62,7 +62,7 @@ class PlayerTest {
      */
     @Test
     void testGetPlayerName() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee",false);
         assertEquals("Bruce Lee", bruceLee.getPlayerName());
     }
 
@@ -71,7 +71,7 @@ class PlayerTest {
      */
     @Test
     void addCardToHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         assertEquals(0, bruceLee.getNumCardInHand());
         assertFalse(bruceLee.hasCardInHand());
         bruceLee.addCardToHand(new Card(3, 3, CardConstants.DIAMONDS));
@@ -84,7 +84,7 @@ class PlayerTest {
      */
     @Test
     void testGetNumCardInHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         assertEquals(0, bruceLee.getNumCardInHand());
     }
 
@@ -93,7 +93,7 @@ class PlayerTest {
      */
     @Test
     void testHasCardInHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         assertFalse(bruceLee.hasCardInHand());
         Card toAdd = new Card(3, 3, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(toAdd);
@@ -105,7 +105,7 @@ class PlayerTest {
      */
     @Test
     void getCardByIndex() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card one = new Card(3, 3, CardConstants.DIAMONDS);
         Card two = new Card(4, 4, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(one);
@@ -119,7 +119,7 @@ class PlayerTest {
      */
     @Test
     void getAllCards() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card one = new Card(3, 3, CardConstants.DIAMONDS);
         Card two = new Card(4, 4, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(one);
@@ -132,7 +132,7 @@ class PlayerTest {
      */
     @Test
     void sortCurrentHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card three = new Card(3, 3, CardConstants.DIAMONDS);
         Card four = new Card(4, 4, CardConstants.DIAMONDS);
         Card five = new Card(5, 5, CardConstants.DIAMONDS);
