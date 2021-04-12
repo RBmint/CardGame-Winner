@@ -51,9 +51,6 @@ public class GameLauncher implements CardConstants {
             }
             int[] indexOfCards = currentPlayingPlayer.playAHand(game.getLastPlay());
             if (indexOfCards[0] == 0) {
-                if (currentPlayingPlayer.isAI()) {
-                    System.out.println(currentPlayingPlayer.getPlayerName() + " choose to skip turn");
-                }
                 game.skipCurrentPlayerTurn();
                 newPlayerTurn = true;
                 turns++;

@@ -53,14 +53,14 @@ class ComboTypeTest implements CardConstants{
                 new Card(3, 3, DIAMONDS),
                 new Card(4, 4, HEARTS),
                 new Card(4, 4, DIAMONDS)};
-//        assertFalse(ComboType.isConsecutivePairs(one));
+        assertTrue(ComboType.isConsecutivePairs(one));
         Card[] two = {new Card(3, 3, HEARTS),
                 new Card(3, 3, DIAMONDS),
                 new Card(4, 4, HEARTS),
                 new Card(4, 4, DIAMONDS),
                 new Card(5, 5, HEARTS),
                 new Card(6, 6, DIAMONDS)};
-//        assertFalse(ComboType.isConsecutivePairs(two));
+        assertFalse(ComboType.isConsecutivePairs(two));
         Card[] three = {new Card(3, 3, HEARTS),
                 new Card(3, 3, DIAMONDS),
                 new Card(4, 4, HEARTS),
@@ -85,7 +85,7 @@ class ComboTypeTest implements CardConstants{
                 new Card(13, 13, DIAMONDS),
                 new Card(1, 14, HEARTS),
                 new Card(1, 14, DIAMONDS)};
-//        assertFalse(ComboType.isConsecutivePairs(five));
+        assertFalse(ComboType.isConsecutivePairs(five));
         Card[] six = {
                 new Card(13, 13, HEARTS),
                 new Card(13, 13, DIAMONDS),
@@ -93,7 +93,7 @@ class ComboTypeTest implements CardConstants{
                 new Card(1, 14, DIAMONDS),
                 new Card(2, 15, HEARTS),
                 new Card(2, 15, DIAMONDS)};
-        assertTrue(ComboType.isConsecutivePairs(six));
+        assertFalse(ComboType.isConsecutivePairs(six));
         Card[] seven = {
                 new Card(1, 14, HEARTS),
                 new Card(1, 14, DIAMONDS),
@@ -101,7 +101,7 @@ class ComboTypeTest implements CardConstants{
                 new Card(2, 15, DIAMONDS),
                 new Card(3, 3, HEARTS),
                 new Card(3, 3, DIAMONDS),};
-//        assertFalse(ComboType.isConsecutivePairs(seven));
+        assertTrue(ComboType.isConsecutivePairs(seven));
         Card[] eight = {
                 new Card(1, 14, HEARTS),
                 new Card(1, 14, DIAMONDS),

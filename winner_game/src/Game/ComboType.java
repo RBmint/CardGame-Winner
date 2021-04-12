@@ -105,19 +105,22 @@ public class ComboType implements CardConstants {
                 if (value.get(value.size() - 1) == 13 && value.get(value.size() - 2) == 13) {
                     /*Remove the A and add 14 so the pairs are consecutive */
                     value.remove(0);
-                    value.remove(1);
+                    value.remove(0);
                     value.add(14);
                     value.add(14);
                 }
             }
             /*Compare a pair at a time, so i += 2 and avoid index out of bound */
-            for (int i = 0; i < value.size() - 2; i += 2) {
+            for (int i = 0; i < value.size() - 1; i += 2) {
                 /*Check if two cards represent a pair */
-                if (value.get(i).equals(value.get(i + 1))) {
-                    /*Check if the pairs are consecutive*/
-                    if (value.get(i) + 1 != value.get(i + 2)) {
-                        return false;
-                    }
+                if (!value.get(i).equals(value.get(i + 1))) {
+                    return false;
+                }
+            }
+            for (int i = 0; i < value.size() - 2; i += 2) {
+                /*Check if the pairs are consecutive*/
+                if (value.get(i) + 1 != value.get(i + 2)) {
+                    return false;
                 }
             }
             return true;

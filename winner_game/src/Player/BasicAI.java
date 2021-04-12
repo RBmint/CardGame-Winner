@@ -52,6 +52,7 @@ public class BasicAI extends Player {
      * @return
      */
     public int[] playFreely() {
+        System.out.println("The basic AI can play freely. He will choose to play his first card as a single.");
         return new int[]{1};
     }
 
@@ -65,9 +66,11 @@ public class BasicAI extends Player {
             SinglePlay thisPlay = new SinglePlay(new Card[]{getAllCards().get(i)}, getPlayerName());
             if (thisPlay.compareSingle(lastPlay)) {
                 /*Index start from 0, but 0 means to skip turn in the game */
+                System.out.println("This is the first card that is greater than last play that the basic AI finds");
                 return new int[]{i + 1};
             };
         }
+        System.out.println("The basic AI does not have any card greater than last play and choose to skip turn");
         return SKIP_TURN;
     }
 
@@ -113,10 +116,12 @@ public class BasicAI extends Player {
                 SinglePlay thisPlay = new SinglePlay(
                         new Card[]{getAllCards().get(i), getAllCards().get(i + 1)}, getPlayerName());
                 if (thisPlay.compareCanBePlayed(lastPlay)) {
+                    System.out.println("This is the first pair that is greater than last play that the basic AI finds");
                     return new int[]{i + 1, i + 2};
                 };
             }
         }
+        System.out.println("The basic AI does not have any card greater than last play and choose to skip turn");
         return SKIP_TURN;
     }
 
@@ -133,10 +138,13 @@ public class BasicAI extends Player {
                         new Card[]{getAllCards().get(i), getAllCards().get(i + 1), getAllCards().get(i + 2)},
                         getPlayerName());
                 if (thisPlay.compareCanBePlayed(lastPlay)) {
+                    System.out.println("This is the first three of a kind " +
+                            "that is greater than last play that the basic AI finds");
                     return new int[]{i + 1, i + 2, i + 3};
                 }
             }
         }
+        System.out.println("The basic AI does not have any card greater than last play and choose to skip turn");
         return SKIP_TURN;
     }
 }

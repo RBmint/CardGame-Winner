@@ -40,7 +40,7 @@ public class Game implements CardConstants {
 //            activePlayers[i] = new Player("Player" + i, false);
             activePlayers[i] = new BasicAI("Basic AI" + i*101, true);
         }
-        activePlayers[0] = new Player("the Omnipotent", false);
+//        activePlayers[0] = new Player("the Omnipotent", false);
         activePlayers[0].switchTurn();
     }
 
