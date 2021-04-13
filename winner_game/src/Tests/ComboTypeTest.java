@@ -197,6 +197,13 @@ class ComboTypeTest implements CardConstants{
                 new Card(8, 8, HEARTS),
                 new Card(9, 9, HEARTS)};
         assertTrue(ComboType.isStraight(seven));
+        Card[] special = {
+                new Card(10, 10, HEARTS),
+                new Card(11, 11, HEARTS),
+                new Card(12, 12, HEARTS),
+                new Card(13, 13, HEARTS),
+                new Card(1, 14, HEARTS)};
+        assertTrue(ComboType.isStraight(special));
 
     }
 
