@@ -204,7 +204,22 @@ class ComboTypeTest implements CardConstants{
                 new Card(13, 13, HEARTS),
                 new Card(1, 14, HEARTS)};
         assertTrue(ComboType.isStraight(special));
-
+        Card[] fakeFullStraight = {
+                new Card(1, 3, HEARTS),
+                new Card(2, 4, HEARTS),
+                new Card(3, 5, HEARTS),
+                new Card(4, 6, HEARTS),
+                new Card(5, 7, HEARTS),
+                new Card(6, 8, HEARTS),
+                new Card(7, 9, HEARTS),
+                new Card(8, 5, HEARTS),
+                new Card(9, 6, HEARTS),
+                new Card(10, 7, HEARTS),
+                new Card(11, 8, HEARTS),
+                new Card(12, 9, HEARTS),
+                new Card(13, 8, HEARTS)
+        };
+        assertTrue(ComboType.isStraight(fakeFullStraight));
     }
 
     @Test

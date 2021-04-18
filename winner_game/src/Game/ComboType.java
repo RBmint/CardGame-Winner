@@ -165,26 +165,24 @@ public class ComboType implements CardConstants {
     public static boolean isStraight(Card[] input) {
         if (input.length >= 5) {
             LinkedList<Integer> value = new LinkedList<>();
+            /*Detect if there are any duplicates in the input */
             for (Card card : input) {
+                if (value.contains(card.getFacialValue())) {
+                    return false;
+                }
                 value.add(card.getFacialValue());
             }
-            if (value.size() == input.length) {
-                /*Special case for 2 3 4 5 6 7 8 9 10 J Q K A*/
-                if (value.size() == 13) {
+            Collections.sort(value);
+            /*Special case for ... 10 J Q K A*/
+            if (value.contains(1) && value.contains(13)) {
+                value.remove(0); /*Remove the A */
+                value.add(14); /*Add 14 so the straight would stand */
+                if (checkIfInARow(value)) {
                     return true;
                 }
-                Collections.sort(value);
-                /*Special case for ... 10 J Q K A*/
-                if (value.contains(1) && value.contains(13)) {
-                    value.remove(0); /*Remove the A */
-                    value.add(14); /*Add 14 so the straight would stand */
-                    if (checkIfInARow(value)) {
-                        return true;
-                    }
-                }
-                /*Normal cases including A 2 3 4 5*/
-                return checkIfInARow(value);
             }
+            /*Normal cases including A 2 3 4 5*/
+            return checkIfInARow(value);
         }
         return false;
     }
@@ -262,6 +260,10 @@ public class ComboType implements CardConstants {
         }
         if (isFullHouse(input)) {
             /*Case 33555 return 5; case 33355 return 3, both are index 2 */
+            if (value.get(2) <= BIG_TWO) {
+                /*Special case for ACE and BIG TWO */
+                return value.get(2) + ACTUAL_VALUE_DIFF;
+            }
             return value.get(2);
         }
         /*For single, pair, three of a kind and bomb */
