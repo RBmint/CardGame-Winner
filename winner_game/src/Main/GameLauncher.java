@@ -49,13 +49,13 @@ public class GameLauncher implements CardConstants {
                 }
                 newPlayerTurn = false;
             }
-            int[] indexOfCards = currentPlayingPlayer.playAHand(game.getLastPlay());
-            if (indexOfCards[0] == 0) {
+            SinglePlay thisPlay = currentPlayingPlayer.playAHand(game.getLastPlay());
+            if (thisPlay == null) {
                 game.skipCurrentPlayerTurn();
                 newPlayerTurn = true;
                 turns++;
             } else {
-                playSelectedCards(indexOfCards);
+                playSelectedCards(thisPlay);
             }
         }
     }
@@ -64,18 +64,10 @@ public class GameLauncher implements CardConstants {
      * Try play the selected cards. If successful, skip current player's
      * turn and back to the main game loop. If failed, just go back to the
      * main game loop and let the player start over.
-     * @param indexOfCardsToBePlayed cards to be played.
+     * @param thisPlay cards to be played.
      */
-    private void playSelectedCards(int[] indexOfCardsToBePlayed) {
+    private void playSelectedCards(SinglePlay thisPlay) {
         Player p = game.getCurrentPlayingPlayer();
-        Card[] toBeChecked = new Card[indexOfCardsToBePlayed.length];
-        /*Convert the index array from int to a card array */
-        for (int i = 0; i < indexOfCardsToBePlayed.length; i++) {
-            toBeChecked[i] = p.getCardByIndex(indexOfCardsToBePlayed[i]);
-        }
-
-        /*Compare two plays to check if this play can be played. Currently set to always true */
-        SinglePlay thisPlay = new SinglePlay(toBeChecked, p.getPlayerName());
         SinglePlay lastPlay = game.getLastPlay();
         if (thisPlay.compareCanBePlayed(lastPlay) ||
                 /*The first hand is always playable as long as it is valid */
@@ -89,7 +81,7 @@ public class GameLauncher implements CardConstants {
                 }
             }
             game.addToLastPlay(thisPlay);
-            game.removeMultipleFromPlayer(toBeChecked);
+            game.removeMultipleFromPlayer(thisPlay.getCards());
             checkGameStatus();
             if (gameIsOver) {return;}
             game.skipCurrentPlayerTurn();

@@ -22,7 +22,7 @@ public class BasicAI extends Player {
      * @return an array of integer representing the card's index
      */
     @Override
-    public int[] playAHand(SinglePlay lastPlay) {
+    public SinglePlay playAHand(SinglePlay lastPlay) {
         if (lastPlay.getPlayerName().equals(STARTING_PLAYER) || lastPlay.getPlayerName().equals(getPlayerName())) {
             return playFreely();
         }
@@ -33,15 +33,15 @@ public class BasicAI extends Player {
             if (hasAPair()) {
                 return playAPair(lastPlay);
             }
-            return SKIP_TURN;
+            return null;
         }
         if (lastPlay.getComboType().getType().equals(THREE_OF_A_KIND)) {
             if (hasThreeOfAKind()) {
                 return playThreeOfAKind(lastPlay);
             }
-            return SKIP_TURN;
+            return null;
         }
-        return SKIP_TURN;
+        return null;
     }
 
     /**
@@ -51,9 +51,9 @@ public class BasicAI extends Player {
      * as a single.
      * @return
      */
-    public int[] playFreely() {
+    public SinglePlay playFreely() {
         System.out.println("The basic AI can play freely. He will choose to play his first card as a single.");
-        return new int[]{1};
+        return new SinglePlay(new Card[]{getAllCards().get(0)}, getPlayerName());
     }
 
     /**
@@ -61,17 +61,17 @@ public class BasicAI extends Player {
      * @param lastPlay the last set of cards played
      * @return an array of integer representing a single card, or skip turn.
      */
-    public int[] playSingle(SinglePlay lastPlay) {
+    public SinglePlay playSingle(SinglePlay lastPlay) {
         for(int i = 0; i < getAllCards().size(); i++) {
             SinglePlay thisPlay = new SinglePlay(new Card[]{getAllCards().get(i)}, getPlayerName());
             if (thisPlay.compareSingle(lastPlay)) {
                 /*Index start from 0, but 0 means to skip turn in the game */
                 System.out.println("This is the first card that is greater than last play that the basic AI finds");
-                return new int[]{i + 1};
+                return thisPlay;
             };
         }
         System.out.println("The basic AI does not have any card greater than last play and choose to skip turn");
-        return SKIP_TURN;
+        return null;
     }
 
     /**
@@ -110,19 +110,19 @@ public class BasicAI extends Player {
      * @param lastPlay the last set of cards played
      * @return an array of integer representing a pair, or skip turn.
      */
-    public int[] playAPair(SinglePlay lastPlay) {
+    public SinglePlay playAPair(SinglePlay lastPlay) {
         for (int i = 0; i < getAllCards().size() - 1; i++) {
             if (getAllCards().get(i).getFacialValue() == getAllCards().get(i + 1).getFacialValue()) {
                 SinglePlay thisPlay = new SinglePlay(
                         new Card[]{getAllCards().get(i), getAllCards().get(i + 1)}, getPlayerName());
                 if (thisPlay.compareCanBePlayed(lastPlay)) {
                     System.out.println("This is the first pair that is greater than last play that the basic AI finds");
-                    return new int[]{i + 1, i + 2};
+                    return thisPlay;
                 };
             }
         }
         System.out.println("The basic AI does not have any card greater than last play and choose to skip turn");
-        return SKIP_TURN;
+        return null;
     }
 
     /**
@@ -130,7 +130,7 @@ public class BasicAI extends Player {
      * @param lastPlay the last set of cards played
      * @return an array of integer representing three of a kind, or skip turn.
      */
-    public int[] playThreeOfAKind(SinglePlay lastPlay) {
+    public SinglePlay playThreeOfAKind(SinglePlay lastPlay) {
         for (int i = 0; i < getAllCards().size() - 2; i++) {
             if (getAllCards().get(i).getFacialValue() == getAllCards().get(i + 1).getFacialValue() &&
                     getAllCards().get(i).getFacialValue() == getAllCards().get(i + 2).getFacialValue()) {
@@ -140,12 +140,12 @@ public class BasicAI extends Player {
                 if (thisPlay.compareCanBePlayed(lastPlay)) {
                     System.out.println("This is the first three of a kind " +
                             "that is greater than last play that the basic AI finds");
-                    return new int[]{i + 1, i + 2, i + 3};
+                    return thisPlay;
                 }
             }
         }
         System.out.println("The basic AI does not have any card greater than last play and choose to skip turn");
-        return SKIP_TURN;
+        return null;
     }
 }
 
