@@ -30,7 +30,7 @@ class CardDeckTest {
     void testAddJokers() {
         CardDeck deck = new CardDeck(true);
         deck.addJokers();
-        assertEquals(5, deck.getCardDeck().getLast().getSuit());
+        assertEquals(4, deck.getCardDeck().getLast().getSuit());
     }
 
     /**

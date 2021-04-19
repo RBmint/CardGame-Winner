@@ -5,9 +5,7 @@ import Game.Game;
 import Game.SinglePlay;
 import GameInterface.CardConstants;
 import Player.Player;
-
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * The class that starts the game and holds a game loop.
@@ -15,7 +13,8 @@ import java.util.Scanner;
 public class GameLauncher implements CardConstants {
     private Game game;
     private boolean gameIsOver = false;
-
+    private boolean newPlayerTurn = true;
+    private int turns = 1;
     /**
      * The default constructor will start a new game and bring the
      * players into the game loop.
@@ -31,35 +30,34 @@ public class GameLauncher implements CardConstants {
      */
     private void enterGameLoop() {
         while (!gameIsOver) {
+            System.out.println("~~~~~~~~~~~~~~~~~~~~");
+            System.out.print("This is turn #" + turns + " and it is ");
             game.printCurrentPlayingPlayer();
             Player currentPlayingPlayer = game.getCurrentPlayingPlayer();
 //            String playerName = currentPlayingPlayer.getPlayerName();
-            printAllCardsInHand(currentPlayingPlayer.getAllCards());
-
-            int[] indexOfCards = getIndexOfCards();
+            if (newPlayerTurn) {
+                if (turns == 1) {
+                    System.out.println("The first player can play whatever he wants.");
+                } else {
+                    System.out.println("Current play is the following cards:");
+                    for (Card card : game.getLastPlay().getCards()) {
+                        printCurrentCard(card);
+                    }
+                }
+                if (!currentPlayingPlayer.isAI()) {
+                    printAllCardsInHand(currentPlayingPlayer.getAllCards());
+                }
+                newPlayerTurn = false;
+            }
+            int[] indexOfCards = currentPlayingPlayer.playAHand(game.getLastPlay());
             if (indexOfCards[0] == 0) {
                 game.skipCurrentPlayerTurn();
+                newPlayerTurn = true;
+                turns++;
             } else {
                 playSelectedCards(indexOfCards);
             }
         }
-    }
-
-    /**
-     * Use the scanner to get the index of cards that a player chooses to
-     * play and convert to an array of integers.
-     * @return the cards as an array of integers.
-     */
-    private int[] getIndexOfCards() {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        /*Terminal UI will be replaced in later weeks, so currently only comma will be used for testing */
-        String[] inputAsArray = input.split(",");
-        int[] indexOfCards = new int[inputAsArray.length];
-        for (int i = 0; i < inputAsArray.length; i++) {
-            indexOfCards[i] = Integer.parseInt(inputAsArray[i]);
-        }
-        return indexOfCards;
     }
 
     /**
@@ -79,14 +77,26 @@ public class GameLauncher implements CardConstants {
         /*Compare two plays to check if this play can be played. Currently set to always true */
         SinglePlay thisPlay = new SinglePlay(toBeChecked, p.getPlayerName());
         SinglePlay lastPlay = game.getLastPlay();
-        if (thisPlay.compareCanBePlayed(lastPlay) || lastPlay.getPlayerName().equals(STARTING_PLAYER)) {
+        if (thisPlay.compareCanBePlayed(lastPlay) ||
+                /*The first hand is always playable as long as it is valid */
+                (lastPlay.getPlayerName().equals(STARTING_PLAYER) && thisPlay.getComboType().isValid()) ||
+                /*If all other players choose to skip turn then the leading player can play freely */
+                (lastPlay.getPlayerName().equals(p.getPlayerName()) && thisPlay.getComboType().isValid())) {
+            if (p.isAI()) {
+                System.out.print("AI chose to play " );
+                for (Card card : thisPlay.getCards()) {
+                    printCurrentCard(card);
+                }
+            }
             game.addToLastPlay(thisPlay);
             game.removeMultipleFromPlayer(toBeChecked);
             checkGameStatus();
             if (gameIsOver) {return;}
             game.skipCurrentPlayerTurn();
+            newPlayerTurn = true;
+            turns++;
         } else {
-            System.out.println("Selected cards cannot be played. Please try again.");
+            System.out.println("Selected cards cannot be played. Please try input index again: ");
         }
     }
 
@@ -157,16 +167,6 @@ public class GameLauncher implements CardConstants {
      * @return the correct suit
      */
     private String getCorrectSuitName(Card cardToPrint) {
-        if (cardToPrint.getSuit() == CLUBS) {
-            return "CLUBS";
-        } else if (cardToPrint.getSuit() == DIAMONDS) {
-            return "DIAMONDS";
-        } else if (cardToPrint.getSuit() == HEARTS) {
-            return "HEARTS";
-        } else if (cardToPrint.getSuit() == SPADES) {
-            return "SPADES";
-        } else {
-            return "JOKER";
-        }
+        return SUIT_NAME_STRING[cardToPrint.getSuit()];
     }
 }

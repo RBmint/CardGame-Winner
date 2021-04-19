@@ -1,10 +1,14 @@
 package Tests;
 
+import Game.Game;
+import Game.SinglePlay;
 import org.junit.jupiter.api.Test;
 import Card.Card;
 import GameInterface.CardConstants;
 import Player.Player;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * unit tests for Player class
  */
-class PlayerTest {
+class PlayerTest implements CardConstants{
 
     /**
      * testing switchTurn()
      */
     @Test
-    void testSwitchTurn() {
-        Player bruceLee = new Player("Bruce Lee");
+    void SwitchTurn() {
+        Player bruceLee = new Player("Bruce Lee", false);
         bruceLee.switchTurn();
         assertTrue(bruceLee.isTurnToPlay());
     }
@@ -28,8 +32,8 @@ class PlayerTest {
      * testing isTurnToPlay()
      */
     @Test
-    void testIsTurnToPlay() {
-        Player bruceLee = new Player("Bruce Lee");
+    void isTurnToPlay() {
+        Player bruceLee = new Player("Bruce Lee", false);
         assertFalse(bruceLee.isTurnToPlay());
     }
 
@@ -37,8 +41,8 @@ class PlayerTest {
      * testing hasThisCard()
      */
     @Test
-    void testHasThisCard() {
-        Player bruceLee = new Player("Bruce Lee");
+    void hasThisCard() {
+        Player bruceLee = new Player("Bruce Lee", false);
         Card toAdd = new Card(3, 3, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(toAdd);
         assertTrue(bruceLee.hasThisCard(toAdd));
@@ -49,8 +53,8 @@ class PlayerTest {
      * testing removeCardFromHand()
      */
     @Test
-    void testRemoveCardFromHand() {
-        Player bruceLee = new Player("Bruce Lee");
+    void removeCardFromHand() {
+        Player bruceLee = new Player("Bruce Lee", false);
         bruceLee.addCardToHand(new Card(3, 3, CardConstants.DIAMONDS));
         assertEquals(1, bruceLee.getNumCardInHand());
         bruceLee.removeCardFromHand(bruceLee.getAllCards().getFirst());
@@ -61,8 +65,8 @@ class PlayerTest {
      * testing getPlayerName()
      */
     @Test
-    void testGetPlayerName() {
-        Player bruceLee = new Player("Bruce Lee");
+    void getPlayerName() {
+        Player bruceLee = new Player("Bruce Lee",false);
         assertEquals("Bruce Lee", bruceLee.getPlayerName());
     }
 
@@ -71,7 +75,7 @@ class PlayerTest {
      */
     @Test
     void addCardToHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         assertEquals(0, bruceLee.getNumCardInHand());
         assertFalse(bruceLee.hasCardInHand());
         bruceLee.addCardToHand(new Card(3, 3, CardConstants.DIAMONDS));
@@ -83,8 +87,8 @@ class PlayerTest {
      * testing getNumCardInHand()
      */
     @Test
-    void testGetNumCardInHand() {
-        Player bruceLee = new Player("Bruce Lee");
+    void getNumCardInHand() {
+        Player bruceLee = new Player("Bruce Lee", false);
         assertEquals(0, bruceLee.getNumCardInHand());
     }
 
@@ -92,8 +96,8 @@ class PlayerTest {
      * testing hasCardInHand()
      */
     @Test
-    void testHasCardInHand() {
-        Player bruceLee = new Player("Bruce Lee");
+    void hasCardInHand() {
+        Player bruceLee = new Player("Bruce Lee", false);
         assertFalse(bruceLee.hasCardInHand());
         Card toAdd = new Card(3, 3, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(toAdd);
@@ -105,7 +109,7 @@ class PlayerTest {
      */
     @Test
     void getCardByIndex() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card one = new Card(3, 3, CardConstants.DIAMONDS);
         Card two = new Card(4, 4, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(one);
@@ -119,13 +123,14 @@ class PlayerTest {
      */
     @Test
     void getAllCards() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card one = new Card(3, 3, CardConstants.DIAMONDS);
         Card two = new Card(4, 4, CardConstants.DIAMONDS);
         bruceLee.addCardToHand(one);
         bruceLee.addCardToHand(two);
         assertEquals(one, bruceLee.getAllCards().getFirst());
         assertEquals(two, bruceLee.getAllCards().getLast());
+
     }
 
     /**
@@ -133,7 +138,7 @@ class PlayerTest {
      */
     @Test
     void sortCurrentHand() {
-        Player bruceLee = new Player("Bruce Lee");
+        Player bruceLee = new Player("Bruce Lee", false);
         Card three = new Card(3, 3, CardConstants.DIAMONDS);
         Card four = new Card(4, 4, CardConstants.DIAMONDS);
         Card five = new Card(5, 5, CardConstants.DIAMONDS);
@@ -152,4 +157,34 @@ class PlayerTest {
         assertEquals(three, bruceLee.getAllCards().getFirst());
         assertEquals(eight, bruceLee.getAllCards().getLast());
     }
+
+    /**
+     * testing isAI()
+     */
+    @Test
+    void isAI() {
+        Player testPlayer = new Player("testPlayer", false);
+        assertFalse(testPlayer.isAI());
+    }
+
+    /**
+     * testing playAHand()
+     */
+    @Test
+    void playAHand() {
+        Card testCard = new Card(3, 3, HEARTS);
+        Card[] testCards = {testCard};
+        SinglePlay testSinglePlay = new SinglePlay(testCards, "testPlayer");
+        Player testPlayer = new Player("testPlayer", false);
+        String testInput = "1,2";
+        InputStream in = new ByteArrayInputStream(testInput.getBytes());
+        System.setIn(in);
+        int[] expectedOutput = {1,2};
+        int[] actualOutput = testPlayer.playAHand(testSinglePlay);
+        assertEquals(expectedOutput.length, actualOutput.length);
+        for (int i = 0; i < expectedOutput.length; i++) {
+            assertEquals(expectedOutput[i], actualOutput[i]);
+        }
+    }
+
 }

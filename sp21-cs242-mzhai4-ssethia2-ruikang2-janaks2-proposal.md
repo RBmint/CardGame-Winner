@@ -36,10 +36,10 @@ Winner is a card game similar to the game “President” and “Dou dizhu”, b
  
 ## Brief Timeline
  
-- Week 1: Implement the essential player/game/card class.
-- Week 2: Implement the basic AI and game logic/game loop. The game should be playable by human players.
-- Week 3: Implement the meidum AI and the ranking system.
-- Week 4: Implement the advanced AI and the GUI.
+- Week 1: Implement the essential player/game/card class. By the end of first week, there should be a functional game loop where players can play card freely (no rule implemented yet) and using the terminal UI, output the current game status as well as game starting/ending information.
+- Week 2: Implement the basic AI and game logic/rules. By the end of second week, the game should be fully established and playable by either human players or with basic AIs using the terminal UI.
+- Week 3: Implement the medium AI and the ranking system. By the end of third week, the game should output AI movement explanation and the ranking system should record everything needed locally.
+- Week 4: Implement the advanced AI and the GUI. By the end of fourth week, the game should be finished with a GUI interface that has several screens.
 
  
 ## Rubrics
@@ -49,21 +49,21 @@ Winner is a card game similar to the game “President” and “Dou dizhu”, b
 Royce Zhai:
 | Category | Total Score Allocated | Detailed Rubrics |
 |-----------|:---------:|-------------------------------------------------------------------------------|
-| Game class | 4 | 0: Didn't implement anything <br> 2: Implemented all necessary fields and constructor <br> 4: Implemented all necessary getters and helper functions|
-| Game loop: joinable by players | 3 | 0: Didn't implement anything <br> 1: Implemented a loop <br> 2: Allow player to enter the game loop but not fully functional <br> 3: Fully functioning multi-player game loop that allows a input number of players and switches turns properly |
-|Game loop: start and end | 3 | 0: Didn't implement anything <br> 1: Game loop ends properly when one player clears his hand <br> 2: Part of the game logic functions properly in a game loop <br> 3: Fully functioning game logic in a game loop|
-| Coding style | 5 | 0: Didn't implement any documentation <br>3: Implemented some documentation but not all of them <br> 5: All classes and functions have documentations and codes are properly formatted according to java-style |
-| Unit Test for Game loop | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
+| Game class | 3 | 0: Didn't implement anything <br> 2: Implemented all necessary fields and constructor <br> 3: Implemented all necessary getters and helper functions|
+| Game loop | 5 | 0: Didn't implement anything <br> 1: Implemented a loop <br> 2: Allow player to enter the game loop but not fully functional <br> 3: Fully functioning multi-player game loop that allows a input number of players and switches turns properly <br> 5: The game would start (deal cards) and end (when a player no longer has any card) in correct status |
+| Card class | 2 | 0: Didn't implement anything <br> 1: Implemented an simple card class with values only <br> 2: Implemented a detailed card class with multiple fields and getters |
+| Terminal UI | 5 | 0: Didn't implement anything <br> 1: The game start and end scenarios could be printed <br> 3: The card of each player could be printed <br> 5: The player could input the index of cards to play and retry if the play is invalid |
 | Unit Test for Game class | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
+| Unit Test for Card class | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
  
 Ruikang Zhao:
 | Category | Total Score Allocated | Detailed Rubrics |
 |-----------|:---------:|-------------------------------------------------------------------------------|
-| Card class | 5 | 0: Didn't implement anything <br> 3: Implemented all necessary types of card <br> 5: Implemented all necessary constructor, getters, and helper functions properly|
+| Card deck class | 5 | 0: Didn't implement anything <br> 3: Implemented all necessary field of a card deck <br> 5: Implemented all necessary constructor, getters, and helper functions properly|
 | Player class | 5 | 0: Didn't implement anything <br> 3: Implemented all necessary fields, constructor, getters and helper functions for player <br> 5: Included player hand and subtle rules |
-| Coding style | 5 | 0: Didn't implement any documentation <br>3: Implemented some documentation but not all of them <br> 5: All classes and functions have documentations and codes are properly formatted according to java-style |
-| Unit Test for Card class | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
-| Unit Test for Game class | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
+| Card/game interface | 5 | 0: Didn't implement anything <br>3: Implemented some constants but can be further improved <br> 5: Implemented detailed constants that can be used throughout the project and can be extended easily |
+| Unit Test for Card deck class | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
+| Unit Test for Player class | 5 | 0: Didn't implement tests <br> 1: unit test coverage < 50% <br> 3: unit test coverage < 70% <br> 5: unit test coverage > 90% |
  
 ### Week 2
  
