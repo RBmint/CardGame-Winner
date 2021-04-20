@@ -19,7 +19,7 @@ public class BasicAI extends Player {
      * of a kind. For other combinations, the AI will simply choose to skip
      * a turn.
      * @param lastPlay last set of cards played
-     * @return an array of integer representing the card's index
+     * @return a SinglePlay object representing the play he tries to make
      */
     @Override
     public SinglePlay playAHand(SinglePlay lastPlay) {
@@ -49,7 +49,7 @@ public class BasicAI extends Player {
      * both opponents choose to skip and the AI can play freely.
      * The basic AI will simply choose to play his first card
      * as a single.
-     * @return
+     * @return a SinglePlay object containing the first card in his hand
      */
     public SinglePlay playFreely() {
         System.out.println("The basic AI can play freely. He will choose to play his first card as a single.");
@@ -59,13 +59,12 @@ public class BasicAI extends Player {
     /**
      * The AI searches his hand and always try to play a card when possible.
      * @param lastPlay the last set of cards played
-     * @return an array of integer representing a single card, or skip turn.
+     * @return a SinglePlay object representing a single card, null to skip turn.
      */
     public SinglePlay playSingle(SinglePlay lastPlay) {
         for(int i = 0; i < getAllCards().size(); i++) {
             SinglePlay thisPlay = new SinglePlay(new Card[]{getAllCards().get(i)}, getPlayerName());
             if (thisPlay.compareSingle(lastPlay)) {
-                /*Index start from 0, but 0 means to skip turn in the game */
                 System.out.println("This is the first card that is greater than last play that the basic AI finds");
                 return thisPlay;
             };
@@ -108,7 +107,7 @@ public class BasicAI extends Player {
     /**
      * The AI will always try to play a pair if it is possible.
      * @param lastPlay the last set of cards played
-     * @return an array of integer representing a pair, or skip turn.
+     * @return a SinglePlay object representing a pair, or skip turn.
      */
     public SinglePlay playAPair(SinglePlay lastPlay) {
         for (int i = 0; i < getAllCards().size() - 1; i++) {
@@ -128,7 +127,7 @@ public class BasicAI extends Player {
     /**
      * The AI will always try to play three of a kind if it is possible.
      * @param lastPlay the last set of cards played
-     * @return an array of integer representing three of a kind, or skip turn.
+     * @return a SinglePlay object representing three of a kind, or skip turn.
      */
     public SinglePlay playThreeOfAKind(SinglePlay lastPlay) {
         for (int i = 0; i < getAllCards().size() - 2; i++) {

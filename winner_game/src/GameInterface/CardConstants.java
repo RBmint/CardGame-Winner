@@ -12,7 +12,6 @@ public interface CardConstants {
     int STARTING_HAND = 18;
     String STARTING_PLAYER = "START";
     Card[] STARTING_CARD = {new Card(0, 0, 0)};
-    int[] SKIP_TURN = {0};
     /*From Ace to King, each card has a facial value from 1 to 13 */
     int[] FACIAL_VALUE = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 

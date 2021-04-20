@@ -137,8 +137,9 @@ public class Player implements CardConstants {
 
     /**
      * Use the scanner to get the index of cards that a player chooses to
-     * play and convert to an array of integers.
-     * @return the cards as an array of integers.
+     * play and convert to an array of integers, then convert to a SinglePlay
+     * object represent the play the player tries to make.
+     * @return the play the player tries to make
      */
     public SinglePlay playAHand(SinglePlay lastPlay) {
         Scanner scanner = new Scanner(System.in);
@@ -149,12 +150,12 @@ public class Player implements CardConstants {
         for (int i = 0; i < inputAsArray.length; i++) {
             indexOfCards[i] = Integer.parseInt(inputAsArray[i]);
         }
+
         Card[] toBeChecked = new Card[indexOfCards.length];
         /*Convert the index array from int to a card array */
         for (int i = 0; i < indexOfCards.length; i++) {
             toBeChecked[i] = getCardByIndex(indexOfCards[i]);
         }
-        /*Compare two plays to check if this play can be played. Currently set to always true */
         return new SinglePlay(toBeChecked, getPlayerName());
     }
 }
