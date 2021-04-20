@@ -37,10 +37,10 @@ public class Game implements CardConstants {
     public void initiatePlayers() {
         activePlayers = new Player[DEFAULT_PLAYER_COUNT];
         //TODO: Take user input for player name
-        activePlayers[0] = new MediumAI("Medium AI", true);
-        activePlayers[1] = new BasicAI("Basic AI 101", true);
-        activePlayers[2] = new BasicAI("Basic AI 202", true);
-//        activePlayers[2] = new Player("the Omnipotent", false);
+        activePlayers[1] = new MediumAI("Medium AI", true);
+        activePlayers[2] = new BasicAI("Basic AI 101", true);
+//        activePlayers[2] = new BasicAI("Basic AI 202", true);
+        activePlayers[0] = new Player("the Omnipotent", false);
         activePlayers[0].switchTurn();
     }
 

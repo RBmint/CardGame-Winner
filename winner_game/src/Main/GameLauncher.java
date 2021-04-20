@@ -34,7 +34,6 @@ public class GameLauncher implements CardConstants {
             System.out.print("This is turn #" + turns + " and it is ");
             game.printCurrentPlayingPlayer();
             Player currentPlayingPlayer = game.getCurrentPlayingPlayer();
-//            String playerName = currentPlayingPlayer.getPlayerName();
             if (newPlayerTurn) {
                 if (turns == 1) {
                     System.out.println("The first player can play whatever he wants.");
@@ -44,9 +43,9 @@ public class GameLauncher implements CardConstants {
                         printCurrentCard(card);
                     }
                 }
-                if (!currentPlayingPlayer.isAI()) {
+//                if (!currentPlayingPlayer.isAI()) {
                     printAllCardsInHand(currentPlayingPlayer.getAllCards());
-                }
+//                }
                 newPlayerTurn = false;
             }
             SinglePlay thisPlay = currentPlayingPlayer.playAHand(game.getLastPlay());

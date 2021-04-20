@@ -150,7 +150,9 @@ public class Player implements CardConstants {
         for (int i = 0; i < inputAsArray.length; i++) {
             indexOfCards[i] = Integer.parseInt(inputAsArray[i]);
         }
-
+        if (indexOfCards[0] == 0) {
+            return null;
+        }
         Card[] toBeChecked = new Card[indexOfCards.length];
         /*Convert the index array from int to a card array */
         for (int i = 0; i < indexOfCards.length; i++) {
