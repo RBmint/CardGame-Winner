@@ -1,0 +1,2 @@
+Ricky;Ricky;BasicAI;MediumAI
+Royce;Royce;BasicAI;MediumAI
