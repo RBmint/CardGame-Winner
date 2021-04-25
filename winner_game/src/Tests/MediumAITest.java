@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 public class MediumAITest {
 
+    /**
+     * Test play a hand function for medium AI.
+     */
     @Test
     public void testPlayAHand() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -40,19 +43,18 @@ public class MediumAITest {
         Card[] tenBomb = new Card[] {ten, ten, ten, ten};
         Card[] fullHouse = new Card[] {three, three, three, four, four};
         SinglePlay tenBombPlay = new SinglePlay(tenBomb, "test");
-        SinglePlay straightPlay = new SinglePlay(threeToEight, "test");
         SinglePlay fullHousePlay = new SinglePlay(fullHouse, "test");
         SinglePlay thisPlay = testAI.playAHand(tenBombPlay);
         assertNull(thisPlay);
-
-//        thisPlay = testAI.playAHand(straightPlay);
-//        assertEquals(4, thisPlay.getCards()[0].getFacialValue());
 
         thisPlay = testAI.playAHand(fullHousePlay);
         assertEquals(6, thisPlay.getCards()[2].getFacialValue());
 
     }
 
+    /**
+     * Test if the medium AI can play freely if there is pair/three of a kind.
+     */
     @Test
     public void testPlayFreely() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -77,6 +79,9 @@ public class MediumAITest {
 
     }
 
+    /**
+     * Test if the medium AI can play the smallest single.
+     */
     @Test
     public void testPlaySingle() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -92,6 +97,9 @@ public class MediumAITest {
         assertEquals(8, thisPlay.getCards()[0].getFacialValue());
     }
 
+    /**
+     * Test if the medium AI can play the smallest pair.
+     */
     @Test
     public void testPlayAPair() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -110,6 +118,9 @@ public class MediumAITest {
         assertEquals(seven.getFacialValue(), thisPlay.getCards()[0].getFacialValue());
     }
 
+    /**
+     * Test if the medium AI can play the smallest three of a kind.
+     */
     @Test
     public void testPlayThreeOfAKind() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -128,6 +139,9 @@ public class MediumAITest {
         assertEquals(5, thisPlay.getCards()[0].getFacialValue());
     }
 
+    /**
+     * Test if the medium AI can has a valid straight to play.
+     */
     @Test
     public void testHasStraight() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -147,6 +161,10 @@ public class MediumAITest {
         testAI.addCardToHand(seven);
         assertTrue(testAI.hasStraight());
     }
+
+    /**
+     * Test if the medium AI can play the correct straight.
+     */
     @Test
     public void testPlayStraight(){
         MediumAI testAI = new MediumAI("MAI", true);
@@ -176,6 +194,9 @@ public class MediumAITest {
         assertEquals(five.getFacialValue(), thisPlay.getCards()[0].getFacialValue());
     }
 
+    /**
+     * Test if the medium AI can has a valid full house.
+     */
     @Test
     public void testHasFullHouse() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -195,6 +216,9 @@ public class MediumAITest {
         assertTrue(testAI.hasFullHouse());
     }
 
+    /**
+     * Test if the medium AI can play a correct full house.
+     */
     @Test
     public void testPlayFullHouse() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -219,6 +243,9 @@ public class MediumAITest {
         assertEquals(10, thisPlay.getCards()[2].getFacialValue());
     }
 
+    /**
+     * Test if the medium AI has a bomb!
+     */
     @Test
     public void testHasABomb() {
         MediumAI testAI = new MediumAI("MAI", true);
@@ -233,6 +260,9 @@ public class MediumAITest {
         assertTrue(testAI.hasABomb());
     }
 
+    /**
+     * Test if the medium AI can play a bomb over other card combinations.
+     */
     @Test
     public void testPlayABomb() {
         MediumAI testAI = new MediumAI("MAI", true);
