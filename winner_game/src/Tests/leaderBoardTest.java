@@ -13,6 +13,9 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * tests for the leader board class
+ */
 class leaderBoardTest {
 
     @Test

@@ -7,15 +7,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * leader board class that implements the game ranking system
+ * including leading players, match histories, features of r/w and clear.
+ */
 public class leaderBoard {
     private final ArrayList<leaderPlayer> players;
     private final ArrayList<matchHistory> matchHistories;
 
+    /**
+     * constructor
+     */
     public leaderBoard() {
         this.players = new ArrayList<>();
         this.matchHistories = new ArrayList<>();
     }
 
+    /**
+     * read leading players from "leaderPlayers.txt"
+     * @throws Exception file not found
+     */
     public void readPlayers() throws Exception {
         Scanner scanner = new Scanner(new File("winner_game/src/rankingSystem/leaderPlayers.txt"));
         while (scanner.hasNextLine()) {
@@ -36,6 +47,10 @@ public class leaderBoard {
         }
     }
 
+    /**
+     * read match histories from "matchHistories.txt"
+     * @throws Exception file not found
+     */
     public void readMatchHistories() throws Exception {
         Scanner scanner = new Scanner(new File("winner_game/src/rankingSystem/matchHistories.txt"));
         while (scanner.hasNextLine()) {
@@ -60,6 +75,10 @@ public class leaderBoard {
         }
     }
 
+    /**
+     * write current leading players to "leaderPlayers.txt"
+     * @throws IOException ioException
+     */
     public void writePlayers() throws IOException {
         FileWriter myWriter = new FileWriter("winner_game/src/rankingSystem/leaderPlayers.txt", false);
         for (int i = 0; i < players.size(); i++) {
@@ -70,6 +89,10 @@ public class leaderBoard {
         myWriter.close();
     }
 
+    /**
+     * write current match histories to "matchHistories.txt"
+     * @throws IOException ioException
+     */
     public void writeMatchHistories() throws IOException {
         FileWriter myWriter = new FileWriter("winner_game/src/rankingSystem/matchHistories.txt", false);
         for (matchHistory match : matchHistories) {
@@ -84,6 +107,11 @@ public class leaderBoard {
         myWriter.close();
     }
 
+    /**
+     * update a leading player's score
+     * @param name the player to be updated
+     * @param score the new score for the player
+     */
     public void updatePlayer(String name, int score) {
         for (leaderPlayer player: this.players) {
             if (name == player.getName()) {
@@ -99,11 +127,20 @@ public class leaderBoard {
         this.players.add(newPlayer);
     }
 
+    /**
+     * add a new match history
+     * @param winner the winner of the game to be added
+     * @param players the players of the game to be added
+     */
     public void addMatchHistory(String winner, String[] players) {
         matchHistory toAdd = new matchHistory(winner, players);
         matchHistories.add(toAdd);
     }
 
+    /**
+     * clear all history data in the ranking system
+     * @throws IOException ioException
+     */
     public void clearAll() throws IOException {
         this.players.clear();
         writePlayers();
@@ -111,10 +148,18 @@ public class leaderBoard {
         writeMatchHistories();
     }
 
+    /**
+     * getter of leading players
+     * @return leading players
+     */
     public ArrayList<leaderPlayer> getPlayers() {
         return this.players;
     }
 
+    /**
+     * getter of match histories
+     * @return match histories
+     */
     public ArrayList<matchHistory> getMatchHistories() {
         return this.matchHistories;
     }
