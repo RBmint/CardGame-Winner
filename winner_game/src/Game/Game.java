@@ -5,6 +5,7 @@ import Card.CardDeck;
 import GameInterface.CardConstants;
 import Player.Player;
 import Player.BasicAI;
+import Player.MediumAI;
 import java.util.Stack;
 
 /**
@@ -35,12 +36,11 @@ public class Game implements CardConstants {
      */
     public void initiatePlayers() {
         activePlayers = new Player[DEFAULT_PLAYER_COUNT];
-        for (int i = 0; i < DEFAULT_PLAYER_COUNT; i++) {
-            //TODO: Take user input for player name
-//            activePlayers[i] = new Player("Player" + i, false);
-            activePlayers[i] = new BasicAI("Basic AI" + i*101, true);
-        }
-//        activePlayers[0] = new Player("the Omnipotent", false);
+        //TODO: Take user input for player name
+        activePlayers[1] = new MediumAI("Medium AI", true);
+        activePlayers[2] = new BasicAI("Basic AI 101", true);
+//        activePlayers[2] = new BasicAI("Basic AI 202", true);
+        activePlayers[0] = new Player("the Omnipotent", false);
         activePlayers[0].switchTurn();
     }
 

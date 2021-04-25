@@ -176,15 +176,12 @@ class PlayerTest implements CardConstants{
         Card[] testCards = {testCard};
         SinglePlay testSinglePlay = new SinglePlay(testCards, "testPlayer");
         Player testPlayer = new Player("testPlayer", false);
-        String testInput = "1,2";
+        testPlayer.addCardToHand(testCard);
+        String testInput = "1";
         InputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
-        int[] expectedOutput = {1,2};
-        int[] actualOutput = testPlayer.playAHand(testSinglePlay);
-        assertEquals(expectedOutput.length, actualOutput.length);
-        for (int i = 0; i < expectedOutput.length; i++) {
-            assertEquals(expectedOutput[i], actualOutput[i]);
-        }
+        SinglePlay actualOutput = testPlayer.playAHand(testSinglePlay);
+        assertEquals(actualOutput.getCards()[0], testCard);
     }
 
 }

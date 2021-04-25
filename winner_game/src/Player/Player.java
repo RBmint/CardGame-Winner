@@ -98,10 +98,7 @@ public class Player implements CardConstants {
      * @return The card that has the corresponding index.
      */
     public Card getCardByIndex(int index) {
-         /*
-        since the intrinsic index starts from 0, index should be subtracted by 1
-         */
-
+         /*Since the intrinsic index starts from 0, index should be subtracted by 1*/
         return myCards.get(index - 1);
     }
 
@@ -140,10 +137,11 @@ public class Player implements CardConstants {
 
     /**
      * Use the scanner to get the index of cards that a player chooses to
-     * play and convert to an array of integers.
-     * @return the cards as an array of integers.
+     * play and convert to an array of integers, then convert to a SinglePlay
+     * object represent the play the player tries to make.
+     * @return the play the player tries to make
      */
-    public int[] playAHand(SinglePlay lastPlay) {
+    public SinglePlay playAHand(SinglePlay lastPlay) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         /*Terminal UI will be replaced in later weeks, so currently only comma will be used for testing */
@@ -152,6 +150,14 @@ public class Player implements CardConstants {
         for (int i = 0; i < inputAsArray.length; i++) {
             indexOfCards[i] = Integer.parseInt(inputAsArray[i]);
         }
-        return indexOfCards;
+        if (indexOfCards[0] == 0) {
+            return null;
+        }
+        Card[] toBeChecked = new Card[indexOfCards.length];
+        /*Convert the index array from int to a card array */
+        for (int i = 0; i < indexOfCards.length; i++) {
+            toBeChecked[i] = getCardByIndex(indexOfCards[i]);
+        }
+        return new SinglePlay(toBeChecked, getPlayerName());
     }
 }
