@@ -44,7 +44,7 @@ public class MediumAI extends BasicAI {
         if (hasABomb()) {
             playABomb(lastPlay);
         }
-        System.out.println("The Medium AI does not have any card combination that is playable");
+        System.out.println("The "+ getPlayerName() +" does not have any card combination that is playable");
         return null;
     }
 
@@ -87,7 +87,7 @@ public class MediumAI extends BasicAI {
                     } else {
                         Card fakeTwo = new Card(2, 2, SPADES);
                         SinglePlay fake = new SinglePlay(new Card[]{fakeTwo, fakeTwo, fakeTwo}, "faker");
-                        System.out.println("The Medium AI can play freely and his smallest hand is three of a kind.");
+                        System.out.println("The "+ getPlayerName() +" can play freely and his smallest hand is three of a kind.");
                         return playThreeOfAKind(fake);
                     }
                 }
@@ -97,15 +97,15 @@ public class MediumAI extends BasicAI {
                         && getAllCards().get(i).getFacialValue() != getAllCards().get(i + 2).getFacialValue()) {
                     Card fakeTwo = new Card(2,2, SPADES);
                     SinglePlay fake = new SinglePlay(new Card[]{fakeTwo, fakeTwo}, "faker");
-                    System.out.println("The Medium AI can play freely and his smallest hand is a pair.");
+                    System.out.println("The "+ getPlayerName() +" can play freely and his smallest hand is a pair.");
                     return playAPair(fake);
                 }
             }
-            System.out.println("The Medium AI can play freely and his smallest hand is a single.");
+            System.out.println("The "+ getPlayerName() +" can play freely and his smallest hand is a single.");
             return new SinglePlay(new Card[]{getAllCards().get(i + 1)}, getPlayerName());
 
         }
-        System.out.println("The Medium AI can play freely and his smallest hand is an ACE/BIG TWO.");
+        System.out.println("The "+ getPlayerName() +" can play freely and his smallest hand is an ACE/BIG TWO.");
         return new SinglePlay(new Card[]{getAllCards().get(0)}, getPlayerName());
     }
 
@@ -123,9 +123,9 @@ public class MediumAI extends BasicAI {
             bestPlay = compareBestPlay(bestPlay, thisPlay, lastPlay);
         }
         if (bestPlay == null) {
-            System.out.println("The Medium AI does not have a bigger hand and choose to skip his turn.");
+            System.out.println("The "+ getPlayerName() +" does not have a bigger hand and choose to skip his turn.");
         } else {
-            System.out.println("The Medium AI will find the smallest single in his hand that beats the last play.");
+            System.out.println("The "+ getPlayerName() +" will find the smallest single in his hand that beats the last play.");
         }
         return bestPlay;
     }
@@ -146,9 +146,9 @@ public class MediumAI extends BasicAI {
             }
         }
         if (bestPlay == null) {
-            System.out.println("The Medium AI does not have a bigger hand and choose to skip his turn.");
+            System.out.println("The "+ getPlayerName() +" does not have a bigger hand and choose to skip his turn.");
         } else {
-            System.out.println("The Medium AI will find the smallest pair in his hand that beats the last play.");
+            System.out.println("The "+ getPlayerName() +" will find the smallest pair in his hand that beats the last play.");
         }
         return bestPlay;
     }
@@ -171,9 +171,9 @@ public class MediumAI extends BasicAI {
             }
         }
         if (bestPlay == null) {
-            System.out.println("The Medium AI does not have a bigger hand and choose to skip his turn.");
+            System.out.println("The "+ getPlayerName() +" does not have a bigger hand and choose to skip his turn.");
         } else {
-            System.out.println("The Medium AI will find the smallest " +
+            System.out.println("The "+ getPlayerName() +" will find the smallest " +
                     "three of a kind in his hand that beats the last play.");
         }
         return bestPlay;
@@ -247,9 +247,9 @@ public class MediumAI extends BasicAI {
             bestPlay = compareBestPlay(bestPlay, thisPlay, lastPlay);
         }
         if (bestPlay == null) {
-            System.out.println("The Medium AI does not have a bigger hand and choose to skip his turn.");
+            System.out.println("The "+ getPlayerName() +" does not have a bigger hand and choose to skip his turn.");
         } else {
-            System.out.println("The Medium AI will find the smallest straight in his hand that beats the last play.");
+            System.out.println("The "+ getPlayerName() +" will find the smallest straight in his hand that beats the last play.");
         }
         return bestPlay;
     }
@@ -302,9 +302,9 @@ public class MediumAI extends BasicAI {
             }
         }
         if (bestPlay == null) {
-            System.out.println("The Medium AI does not have a bigger hand and choose to skip his turn.");
+            System.out.println("The "+ getPlayerName() +" does not have a bigger hand and choose to skip his turn.");
         } else {
-            System.out.println("The Medium AI will find the smallest full house in his hand that beats the last play.");
+            System.out.println("The "+ getPlayerName() +" will find the smallest full house in his hand that beats the last play.");
         }
         return bestPlay;
     }
@@ -342,11 +342,11 @@ public class MediumAI extends BasicAI {
             }
             SinglePlay thisPlay = new SinglePlay(bomb, getPlayerName());
             if (thisPlay.compareCanBePlayed(lastPlay)) {
-                System.out.println("The Medium AI does not have a matching combotype, but he has a BOMB!");
+                System.out.println("The "+ getPlayerName() +" does not have a matching combotype, but he has a BOMB!");
                 return thisPlay;
             }
         }
-        System.out.println("The Medium AI does not have a bigger bomb and chooses to skip his turn.");
+        System.out.println("The "+ getPlayerName() +" does not have a bigger bomb and chooses to skip his turn.");
         return null;
     }
 }
