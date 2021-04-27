@@ -6,6 +6,7 @@ import GameInterface.CardConstants;
 import Player.Player;
 import Player.BasicAI;
 import Player.MediumAI;
+import Player.AdvancedAI;
 import java.util.Stack;
 
 /**
@@ -25,6 +26,28 @@ public class Game implements CardConstants {
     public Game() {
         newDeck = new CardDeck(false);
         initiatePlayers();
+        dealCardsToPlayers();
+        SinglePlay startingPlay = new SinglePlay(STARTING_CARD, STARTING_PLAYER);
+        pastPlays.add(startingPlay);
+    }
+
+    public Game(String playerName, int[] AIs) {
+        newDeck = new CardDeck(false);
+        activePlayers = new Player[DEFAULT_PLAYER_COUNT];
+        activePlayers[0] = new Player(playerName, false);
+        activePlayers[0].switchTurn(); // playerName's turn
+        if (AIs[0] == 1 && AIs[1] == 1) { //basic + medium
+            activePlayers[1] = new BasicAI("Basic AI", true);
+            activePlayers[2] = new MediumAI("Medium AI", true);
+        }
+        else if (AIs[0] == 1 && AIs[2] == 1) { //basic + Advanced
+            activePlayers[1] = new BasicAI("Basic AI", true);
+            activePlayers[2] = new AdvancedAI("Advanced AI", true);
+        }
+        else if (AIs[1] == 1 && AIs[2] == 1) { //medium + Advanced
+            activePlayers[1] = new MediumAI("Medium AI", true);
+            activePlayers[2] = new AdvancedAI("Advanced AI", true);
+        }
         dealCardsToPlayers();
         SinglePlay startingPlay = new SinglePlay(STARTING_CARD, STARTING_PLAYER);
         pastPlays.add(startingPlay);
@@ -140,6 +163,10 @@ public class Game implements CardConstants {
             }
         }
         return null;
+    }
+
+    public Player[] getActivePlayers() {
+        return this.activePlayers;
     }
 
     /**
