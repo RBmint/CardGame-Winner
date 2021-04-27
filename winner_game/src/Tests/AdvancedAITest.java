@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AdvancedAITest {
 
+    /**
+     * Test if the advanced AI can play the correct cards.
+     */
     @Test
     void testPlayAHand() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -22,6 +25,9 @@ public class AdvancedAITest {
         assertEquals(5, testAI.playAHand(lastPlay).getCards()[0].getFacialValue());
     }
 
+    /**
+     * Test if the advanced AI can play the correct card combination when he can play freely.
+     */
     @Test
     void testPlayFreely() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -56,6 +62,10 @@ public class AdvancedAITest {
         testAI.addCardToHand(three);
         assertEquals(3, testAI2.playFreely().getCards()[0].getFacialValue());
     }
+
+    /**
+     * Test if the number of cards returned is correct.
+     */
     @Test
     void testGetNumberOfCardsByValue() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -71,6 +81,9 @@ public class AdvancedAITest {
         assertEquals(2, testAI.getNumberOfCardByValue(4));
     }
 
+    /**
+     * Test if the advanced AI can play the correct straight.
+     */
     @Test
     void testCheckForPossibleStraight() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -103,6 +116,9 @@ public class AdvancedAITest {
         assertNull(testAI.checkForPossibleStraight());
     }
 
+    /**
+     * Test if the advanced AI can play the correct consecutive pairs.
+     */
     @Test
     void testCheckForPossibleConsecutivePairs() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -120,6 +136,9 @@ public class AdvancedAITest {
         assertEquals(6, testAI.checkForPossibleConsecutivePairs().getCards().length);
     }
 
+    /**
+     * Test if the advanced AI can play the correct full house.
+     */
     @Test
     void testCheckForPossibleFullHouse() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -135,6 +154,9 @@ public class AdvancedAITest {
         assertEquals(5, testAI.checkForPossibleFullHouse().getCards().length);
     }
 
+    /**
+     * Test if the advanced AI can play the correct three of a kind.
+     */
     @Test
     void testCheckForPossibleThreeOfAKind() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -147,6 +169,9 @@ public class AdvancedAITest {
         assertEquals(3, testAI.checkForPossibleThreeOfAKind().getCards().length);
     }
 
+    /**
+     * Test if the advanced AI can play the correct pair.
+     */
     @Test
     void testCheckForPossiblePair() {
         AdvancedAI testAI = new AdvancedAI("test", true);
@@ -158,6 +183,9 @@ public class AdvancedAITest {
         assertEquals(2, testAI.checkForPossiblePair().getCards().length);
     }
 
+    /**
+     * Test if the advanced AI can play the correct single.
+     */
     @Test
     void testCheckForPossibleSingle() {
         AdvancedAI testAI = new AdvancedAI("test", true);
