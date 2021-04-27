@@ -50,7 +50,7 @@ public class AdvancedAI extends MediumAI {
             if (getAllCards().get(i).getFacialValue() <= 2 || getAllCards().get(i).getFacialValue() >= 10) {
                 continue;
             }
-            if (i + 4 < getAllCards().size()) {
+            if (i + 4 >= getAllCards().size()) {
                 return null;
             }
             int straightCount = 1;
@@ -109,7 +109,8 @@ public class AdvancedAI extends MediumAI {
             initialCardIndex++;
         }
         int pairsCount = 0;
-        while (getNumberOfCardByValue(getAllCards().get(initialCardIndex).getFacialValue()) == 2) {
+        while (initialCardIndex < getAllCards().size() &&
+                getNumberOfCardByValue(getAllCards().get(initialCardIndex).getFacialValue()) == 2) {
             pairsCount++;
             initialCardIndex++;
         }
@@ -154,33 +155,42 @@ public class AdvancedAI extends MediumAI {
         int initialCardIndex = 0;
         while (getAllCards().get(initialCardIndex).getFacialValue() <= 2) {
             initialCardIndex++;
+            System.out.println("ace = 1");
         }
         Card[] threeOfAKind = new Card[3];
+        System.out.println(getAllCards().get(initialCardIndex).getFacialValue());
         if (getNumberOfCardByValue(getAllCards().get(initialCardIndex).getFacialValue()) == 3) {
             threeOfAKind[0] = getAllCards().get(initialCardIndex);
             threeOfAKind[1] = getAllCards().get(initialCardIndex + 1);
             threeOfAKind[2] = getAllCards().get(initialCardIndex + 2);
+            return new SinglePlay(threeOfAKind, getPlayerName());
         }
-        return new SinglePlay(threeOfAKind, getPlayerName());
+        return null;
     }
 
     public SinglePlay checkForPossiblePair() {
         int initialCardIndex = 0;
-        while (getAllCards().get(initialCardIndex).getFacialValue() <= 2) {
+        while (initialCardIndex < getAllCards().size() &&
+                getAllCards().get(initialCardIndex).getFacialValue() <= 2) {
             initialCardIndex++;
         }
         Card[] pair = new Card[2];
         if (getNumberOfCardByValue(getAllCards().get(initialCardIndex).getFacialValue()) == 2) {
             pair[0] = getAllCards().get(initialCardIndex);
             pair[1] = getAllCards().get(initialCardIndex + 1);
+            return new SinglePlay(pair, getPlayerName());
         }
-        return new SinglePlay(pair, getPlayerName());
+        return null;
     }
 
     public SinglePlay checkForSmallestSingle() {
         int initialCardIndex = 0;
-        while (getAllCards().get(initialCardIndex).getFacialValue() <= 2) {
+        while (initialCardIndex < getAllCards().size() &&
+                getAllCards().get(initialCardIndex).getFacialValue() <= 2) {
             initialCardIndex++;
+        }
+        if (initialCardIndex >= getAllCards().size()) {
+            return new SinglePlay(new Card[]{getAllCards().get(0)}, getPlayerName());
         }
         Card[] single = new Card[1];
         single[0] = getAllCards().get(initialCardIndex);
